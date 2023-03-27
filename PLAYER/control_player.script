@@ -1,6 +1,7 @@
 -- funcs
 local message_to_inter;
-
+local refresh_movement_counter;
+--
 local function draw_line(from, to)
 	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(0,0,0,1) })
 end
@@ -8,35 +9,55 @@ local tile_size  = 32;
 local move_players
 local player_table = {"/player1", "/player2"}
 --pprint(player_table)
-
+local movement_check_table = {0,0};
+local movement_check;
 move_players = function(self)
+
 	for i = 1, #player_table do
 		local from = go.get_position(player_table[i])
 		local to = vmath.vector3(from.x, from.y, from.z) + self.to
 		local result = physics.raycast(from, to, { hash("pared"), hash("inter") }) -- <4>
+		
 		if result then
-			--print("A")
 			draw_line(from, result.position) -- <5>
-			message_to_inter(result.id)
-			--pprint(result)
+			if result.group == hash("inter") then
+				message_to_inter(result.id)
+				movement_check_table[i] = 1;
+			end
 		else
 			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_LINEAR, 0.15)
+			movement_check_table[i] = 1;
 			--print("B")
 			draw_line(from, to) -- <6>
 		end
 	end
 	self.to = vmath.vector3()
+	movement_check(self);
+end
+
+movement_check = function(self)
+	if movement_check_table[1] ~= 0 or  movement_check_table[2] ~= 0 then
+		refresh_movement_counter(self, 1)
+	end
+	movement_check_table = {0,0}
 end
 
 message_to_inter = function(to)	
 	msg.post(to, "+1")
 end
 
+refresh_movement_counter = function(self, cuanto)
+	self.amount_of_movement = self.amount_of_movement + cuanto;
+	label.set_text("/contador de movimientos#label", "cantidad de movimientos\nvalidos realizados: " .. self.amount_of_movement);
+end
 
 
 function init(self)
 	msg.post("", "acquire_input_focus")
 	self.to = vmath.vector3()
+	--
+	self.amount_of_movement = 0;
+	
 end
 
 function on_input(self, action_id, action)
