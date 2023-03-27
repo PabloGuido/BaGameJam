@@ -1,0 +1,6 @@
+function on_message(self, message_id, message, sender)
+	if message_id == hash("create_inter") then
+		factory.create("#inter", message.pos)
+		--print("creando intreactuable")
+	end
+end

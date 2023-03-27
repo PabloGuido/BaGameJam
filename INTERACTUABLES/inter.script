@@ -1,0 +1,12 @@
+function init(self)
+	self.label_value = 0;
+	label.set_text("#label", self.label_value)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("+1") then
+		self.label_value = self.label_value + 1
+		label.set_text("#label", self.label_value)
+		--print("+1")
+	end
+end

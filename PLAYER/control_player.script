@@ -1,0 +1,56 @@
+-- funcs
+local message_to_inter;
+
+local function draw_line(from, to)
+	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(0,0,0,1) })
+end
+local tile_size  = 32;
+local move_players
+local player_table = {"/player1", "/player2"}
+--pprint(player_table)
+
+move_players = function(self)
+	for i = 1, #player_table do
+		local from = go.get_position(player_table[i])
+		local to = vmath.vector3(from.x, from.y, from.z) + self.to
+		local result = physics.raycast(from, to, { hash("pared"), hash("inter") }) -- <4>
+		if result then
+			--print("A")
+			draw_line(from, result.position) -- <5>
+			message_to_inter(result.id)
+			--pprint(result)
+		else
+			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_LINEAR, 0.15)
+			--print("B")
+			draw_line(from, to) -- <6>
+		end
+	end
+	self.to = vmath.vector3()
+end
+
+message_to_inter = function(to)	
+	msg.post(to, "+1")
+end
+
+
+
+function init(self)
+	msg.post("", "acquire_input_focus")
+	self.to = vmath.vector3()
+end
+
+function on_input(self, action_id, action)
+	if action.pressed and action_id == hash("left") then
+		self.to.x = -tile_size;
+		move_players(self);
+	elseif action.pressed and action_id == hash("right") then
+		self.to.x = tile_size;
+		move_players(self);
+	elseif action.pressed and action_id == hash("up") then
+		self.to.y = tile_size;
+		move_players(self);
+	elseif action.pressed and action_id == hash("down") then
+		self.to.y = -tile_size;
+		move_players(self);
+	end
+end

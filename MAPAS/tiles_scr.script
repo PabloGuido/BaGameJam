@@ -1,0 +1,46 @@
+local tile_size = 32;
+
+local check_tiles
+
+local tiles_table = {};
+local mis_tiles = "/MAPAS#mapa_test1"
+
+-- funcs
+local player_set_pos
+--
+function init(self)
+	local x, y, w, h = tilemap.get_bounds(mis_tiles)
+	tiles_table["w"] = w
+	tiles_table["h"] = h
+	check_tiles();
+end
+
+check_tiles = function()
+	local this_h = 1
+	for H = 1, tiles_table["h"] do
+		
+		for W = 1, tiles_table["w"] do
+			local un_tile = tilemap.get_tile(mis_tiles, "layer1", W, H)
+			--pprint(un_tile)
+			if un_tile == 9 then
+				--print(W * tile_size)
+				--print(H * tile_size)
+				print("player 1")
+				player_set_pos(W, H, "/player1");
+			elseif un_tile == 10 then
+				--print("player 2")
+				player_set_pos(W, H, "/player2");
+			elseif un_tile == 8 then
+				msg.post("/inter_factory#inter_factory", "create_inter", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 1)})
+				
+			end	
+		end
+		this_h = this_h + 1
+	end
+end
+
+player_set_pos = function(x, y, player)
+	local pos = vmath.vector3(x*tile_size-tile_size/2, y*tile_size-tile_size/2, 1)
+	go.set_position(pos, player)
+	
+end
