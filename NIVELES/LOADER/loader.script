@@ -1,0 +1,61 @@
+function init(self)
+	msg.post("", "acquire_input_focus")
+	print("loader ok")
+	msg.post("#main_menu", "load")
+	--
+	self.next_lvl = ""
+	self.lvl_counter = 1;
+	self.lvl_table = {"#main_menu", "#LVL1", "#LVL2", "#LVL3", "#LVL4", "#main_menu"}
+	--
+
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		-- New world is loaded. Init and enable it.
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+	elseif message_id == hash("next_lvl") then
+		msg.post(self.lvl_table[self.lvl_counter], "unload")
+		self.lvl_counter = self.lvl_counter + 1;
+		msg.post(self.lvl_table[self.lvl_counter], "load")
+		if self.lvl_counter >= 6 then
+			self.lvl_counter = 1;
+		end
+	elseif	message_id == hash("proxy_unloaded") then
+		print("unloaded")
+	elseif message_id == hash("load_lvl") then
+		msg.post(self.lvl_table[self.lvl_counter], "unload")
+		self.lvl_counter = self.lvl_counter + message.lvl;
+		msg.post(self.lvl_table[self.lvl_counter], "load")
+	elseif message_id == hash("main_menu") then
+		msg.post(self.lvl_table[self.lvl_counter], "unload")
+		self.lvl_counter = 1;
+		msg.post(self.lvl_table[self.lvl_counter], "load")
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here. The game object this script is attached to
+	-- must have acquired input focus:
+	--
+	--    msg.post(".", "acquire_input_focus")
+	--
+	-- All mapped input bindings will be received. Mouse and touch input will
+	-- be received regardless of where on the screen it happened.
+	-- Learn more: https://defold.com/manuals/input/
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end
