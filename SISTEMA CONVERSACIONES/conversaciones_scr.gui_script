@@ -54,8 +54,10 @@ actualizar_texto = function(self)
 end
 
 cerrar_text = function(self)
-	gui.set_enabled(self.text_box, false);
-	msg.post("/controlador#control_player", "tomar_input");
+	if gui.is_enabled(self.text_box) then
+		gui.set_enabled(self.text_box, false);
+		msg.post("/controlador#control_player", "tomar_input");
+	end
 end
 
 
