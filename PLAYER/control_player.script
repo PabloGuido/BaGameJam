@@ -64,6 +64,9 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("tomar_input") then
 		msg.post("", "acquire_input_focus");
 		print("player tomando input");
+	elseif message_id == hash("quitar_input") then
+		msg.post("", "release_input_focus");
+		print("player quitando input");
 	end
 end
 
