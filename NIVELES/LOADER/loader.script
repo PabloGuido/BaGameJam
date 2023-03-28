@@ -1,4 +1,8 @@
 local chats = require("SISTEMA CONVERSACIONES.chats")
+-- funcs
+local music_on_off;
+
+
 local chat_lvl = function(self)
 	chats.lvl = self.lvl_counter - 1;
 end
@@ -11,7 +15,10 @@ function init(self)
 	self.lvl_counter = 1;
 	self.lvl_table = {"#main_menu", "#LVL1", "#LVL2", "#LVL3", "#LVL4", "#main_menu"}
 	--
-
+	self.musica = false;
+	sound.play("musica#sound");
+	sound.pause("musica#sound", true);
+	
 end
 
 function final(self)
@@ -19,7 +26,6 @@ function final(self)
 	-- Learn more: https://defold.com/manuals/script/
 	-- Remove this function if not needed
 end
-
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
@@ -47,9 +53,20 @@ function on_message(self, message_id, message, sender)
 		self.lvl_counter = 1;
 		chat_lvl(self);
 		msg.post(self.lvl_table[self.lvl_counter], "load")
+	elseif message_id == hash("musica") then
+		music_on_off(self);
 	end
 end
 
+music_on_off = function(self)
+	if self.musica == true then
+		sound.pause("musica#sound", true)
+		self.musica = false;
+	else
+		sound.pause("musica#sound", false)
+		self.musica = true;	
+	end
+end
 function on_input(self, action_id, action)
 	-- Add input-handling code here. The game object this script is attached to
 	-- must have acquired input focus:
