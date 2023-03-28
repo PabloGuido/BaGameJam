@@ -30,17 +30,23 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
 		-- New world is loaded. Init and enable it.
+		msg.post("visual#transicion", "achicar_box")
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 	elseif message_id == hash("next_lvl") then
-		msg.post(self.lvl_table[self.lvl_counter], "unload")
-		self.lvl_counter = self.lvl_counter + 1;
-		chat_lvl(self);
-		msg.post(self.lvl_table[self.lvl_counter], "load")
-		if self.lvl_counter >= 6 then
-			self.lvl_counter = 1;
+		msg.post("visual#transicion", "agrandar_box")
+		--
+		local function pasar_lvl()
+			msg.post(self.lvl_table[self.lvl_counter], "unload")
+			self.lvl_counter = self.lvl_counter + 1;
 			chat_lvl(self);
+			msg.post(self.lvl_table[self.lvl_counter], "load")
+			if self.lvl_counter >= 6 then
+				self.lvl_counter = 1;
+				chat_lvl(self);
+			end
 		end
+		timer.delay(0.65, false, pasar_lvl)
 	elseif	message_id == hash("proxy_unloaded") then
 		print("unloaded")
 	elseif message_id == hash("load_lvl") then
@@ -49,10 +55,15 @@ function on_message(self, message_id, message, sender)
 		chat_lvl(self);
 		msg.post(self.lvl_table[self.lvl_counter], "load")
 	elseif message_id == hash("main_menu") then
-		msg.post(self.lvl_table[self.lvl_counter], "unload")
-		self.lvl_counter = 1;
-		chat_lvl(self);
-		msg.post(self.lvl_table[self.lvl_counter], "load")
+		msg.post("visual#transicion", "agrandar_box")
+		--
+		local volver_al_menu = function()
+			msg.post(self.lvl_table[self.lvl_counter], "unload")
+			self.lvl_counter = 1;
+			chat_lvl(self);
+			msg.post(self.lvl_table[self.lvl_counter], "load")
+		end
+		timer.delay(0.65, false, volver_al_menu)
 	elseif message_id == hash("musica") then
 		music_on_off(self);
 	end

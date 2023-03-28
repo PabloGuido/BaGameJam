@@ -1,0 +1,27 @@
+local agrandar_box;
+local achicar_box;
+
+function init(self)
+	gui.set_render_order(1)
+	self.box = gui.get_node("black_box")
+	gui.set_alpha(self.box, 0);
+	gui.set_scale(self.box, vmath.vector4(25,25,1,1));
+	
+end
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("agrandar_box") then
+		agrandar_box(self);
+	elseif message_id == hash("achicar_box") then
+		achicar_box(self);
+	end
+end
+
+agrandar_box = function(self)
+	gui.animate(self.box, "color.w", 1, gui.EASING_LINEAR, 0.5);
+end
+
+achicar_box = function(self)
+	gui.animate(self.box, "color.w", 0, gui.EASING_LINEAR, 0.5);
+end
