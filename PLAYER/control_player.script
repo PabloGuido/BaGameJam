@@ -53,11 +53,18 @@ end
 
 
 function init(self)
-	msg.post("", "acquire_input_focus")
+	--msg.post("", "acquire_input_focus")
 	self.to = vmath.vector3()
 	--
 	self.amount_of_movement = 0;
 	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("tomar_input") then
+		msg.post("", "acquire_input_focus");
+		print("player tomando input");
+	end
 end
 
 function on_input(self, action_id, action)

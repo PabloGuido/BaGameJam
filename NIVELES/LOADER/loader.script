@@ -1,3 +1,7 @@
+local chats = require("SISTEMA CONVERSACIONES.chats")
+local chat_lvl = function(self)
+	chats.lvl = self.lvl_counter - 1;
+end
 function init(self)
 	msg.post("", "acquire_input_focus")
 	print("loader ok")
@@ -25,19 +29,23 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("next_lvl") then
 		msg.post(self.lvl_table[self.lvl_counter], "unload")
 		self.lvl_counter = self.lvl_counter + 1;
+		chat_lvl(self);
 		msg.post(self.lvl_table[self.lvl_counter], "load")
 		if self.lvl_counter >= 6 then
 			self.lvl_counter = 1;
+			chat_lvl(self);
 		end
 	elseif	message_id == hash("proxy_unloaded") then
 		print("unloaded")
 	elseif message_id == hash("load_lvl") then
 		msg.post(self.lvl_table[self.lvl_counter], "unload")
 		self.lvl_counter = self.lvl_counter + message.lvl;
+		chat_lvl(self);
 		msg.post(self.lvl_table[self.lvl_counter], "load")
 	elseif message_id == hash("main_menu") then
 		msg.post(self.lvl_table[self.lvl_counter], "unload")
 		self.lvl_counter = 1;
+		chat_lvl(self);
 		msg.post(self.lvl_table[self.lvl_counter], "load")
 	end
 end

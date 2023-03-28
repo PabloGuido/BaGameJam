@@ -1,0 +1,62 @@
+local chats = require("SISTEMA CONVERSACIONES.chats")
+local actualizar_texto
+local cerrar_text
+
+function init(self)
+	pprint(chats)
+	self.text_count = 1;
+	self.text_box = gui.get_node("text_box");
+	self.chat_text = gui.get_node("chat_text");
+	msg.post("", "acquire_input_focus");
+	--
+	actualizar_texto(self);
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("text") then
+		actualizar_texto(self);
+	elseif action.pressed then
+		if action_id == hash("up") or action_id == hash("down") or action_id == hash("left") or action_id == hash("right") then
+			actualizar_texto(self);
+		end
+	end
+end
+
+actualizar_texto = function(self)
+	if (chats[chats.lvl][self.text_count]) then
+		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count]);
+		self.text_count = self.text_count + 1;
+	else
+		cerrar_text(self);
+	end
+end
+
+cerrar_text = function(self)
+	gui.set_enabled(self.text_box, false);
+	msg.post("/controlador#control_player", "tomar_input");
+end
+
+
+
+
+
+
+
