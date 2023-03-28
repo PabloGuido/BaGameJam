@@ -7,9 +7,13 @@ function init(self)
 	self.text_count = 1;
 	self.text_box = gui.get_node("text_box");
 	self.chat_text = gui.get_node("chat_text");
-	msg.post("", "acquire_input_focus");
+	
 	--
 	actualizar_texto(self);
+	local function tomar_input()
+		msg.post("", "acquire_input_focus")
+	end
+	timer.delay(0.65, false, tomar_input)
 end
 
 function final(self)
