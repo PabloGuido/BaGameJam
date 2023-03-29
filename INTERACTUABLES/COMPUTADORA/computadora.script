@@ -1,0 +1,32 @@
+-- funcs
+local prender_pc;
+local apagar_pc;
+
+function init(self)
+	self.label_value = 0;
+	label.set_text("#label", self.label_value)
+	go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
+	print("pc")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("+1") then
+		if self.label_value == 0 then
+			prender_pc(self);
+		else
+			apagar_pc(self);
+		end
+	end
+end
+
+prender_pc = function(self)
+	go.set("#sprite", "tint", vmath.vector4(0,0.8,0,1))
+	self.label_value = 1;
+	label.set_text("#label", self.label_value)
+end
+
+apagar_pc = function(self)
+	go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
+	self.label_value = 0;
+	label.set_text("#label", self.label_value)
+end
