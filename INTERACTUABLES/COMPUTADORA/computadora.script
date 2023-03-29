@@ -1,3 +1,4 @@
+local datos_nivel = require("NIVELES.datos_nivel");
 -- funcs
 local prender_pc;
 local apagar_pc;
@@ -23,10 +24,12 @@ prender_pc = function(self)
 	go.set("#sprite", "tint", vmath.vector4(0,0.8,0,1))
 	self.label_value = 1;
 	label.set_text("#label", self.label_value)
+	datos_nivel.suma_resta_puntos(1);
 end
 
 apagar_pc = function(self)
 	go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
 	self.label_value = 0;
 	label.set_text("#label", self.label_value)
+	datos_nivel.suma_resta_puntos(-1);
 end
