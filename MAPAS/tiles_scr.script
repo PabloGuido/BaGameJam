@@ -9,13 +9,21 @@ local mis_tiles = "/MAPAS#mapa_test1"
 local player_set_pos
 --
 function init(self)
+	self.player1_pos = vmath.vector3();
+	self.player2_pos = vmath.vector3();
+	--
 	local x, y, w, h = tilemap.get_bounds(mis_tiles)
 	tiles_table["w"] = w
 	tiles_table["h"] = h
-	check_tiles();
-end
+	check_tiles(self);
 
-check_tiles = function()
+end
+function on_message(self, message_id, message, sender)
+	if message_id == hash("restart_player") then
+		msg.post(sender, "posiciones_iniciales", {pos = {self.player1_pos, self.player2_pos}})
+	end
+end
+check_tiles = function(self)
 	local this_h = 1
 	for H = 1, tiles_table["h"] do
 		
@@ -26,10 +34,10 @@ check_tiles = function()
 				--print(W * tile_size)
 				--print(H * tile_size)
 				print("player 1")
-				player_set_pos(W, H, "/player1");
+				player_set_pos(self, W, H, "/player1");
 			elseif un_tile == 10 then
 				--print("player 2")
-				player_set_pos(W, H, "/player2");
+				player_set_pos(self, W, H, "/player2");
 			elseif un_tile == 8 then
 				msg.post("/inter_factory#inter_factory", "create_inter", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 1)})
 				
@@ -39,8 +47,12 @@ check_tiles = function()
 	end
 end
 
-player_set_pos = function(x, y, player)
+player_set_pos = function(self, x, y, player)
 	local pos = vmath.vector3(x*tile_size-tile_size/2, y*tile_size-tile_size/2, 1)
 	go.set_position(pos, player)
-	
+	if player == "/player1" then
+		self.player1_pos = pos;
+	else
+		self.player2_pos = pos;
+	end
 end
