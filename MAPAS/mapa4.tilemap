@@ -718,7 +718,7 @@ layers {
   cell {
     x: 4
     y: 5
-    tile: 5
+    tile: 7
     h_flip: 0
     v_flip: 0
     rotate90: 0

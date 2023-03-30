@@ -1,7 +1,8 @@
 local chats = require("SISTEMA CONVERSACIONES.chats")
+local datos_nivel = require("NIVELES.datos_nivel");
 -- funcs
 local music_on_off;
-
+local actualizar_lvl_counter;
 
 local chat_lvl = function(self)
 	chats.lvl = self.lvl_counter - 1;
@@ -38,7 +39,8 @@ function on_message(self, message_id, message, sender)
 		--
 		local function pasar_lvl()
 			msg.post(self.lvl_table[self.lvl_counter], "unload")
-			self.lvl_counter = self.lvl_counter + 1;
+			--self.lvl_counter = self.lvl_counter + 1;
+			actualizar_lvl_counter(self, self.lvl_counter + 1);
 			chat_lvl(self);
 			msg.post(self.lvl_table[self.lvl_counter], "load")
 			if self.lvl_counter >= 6 then
@@ -51,7 +53,8 @@ function on_message(self, message_id, message, sender)
 		print("unloaded")
 	elseif message_id == hash("load_lvl") then
 		msg.post(self.lvl_table[self.lvl_counter], "unload")
-		self.lvl_counter = self.lvl_counter + message.lvl;
+		--self.lvl_counter = self.lvl_counter + message.lvl;
+		actualizar_lvl_counter(self, self.lvl_counter + message.lvl);
 		chat_lvl(self);
 		msg.post(self.lvl_table[self.lvl_counter], "load")
 	elseif message_id == hash("main_menu") then
@@ -60,6 +63,7 @@ function on_message(self, message_id, message, sender)
 		local volver_al_menu = function()
 			msg.post(self.lvl_table[self.lvl_counter], "unload")
 			self.lvl_counter = 1;
+			actualizar_lvl_counter(self, 1);
 			chat_lvl(self);
 			msg.post(self.lvl_table[self.lvl_counter], "load")
 		end
@@ -67,6 +71,14 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("musica") then
 		music_on_off(self);
 	end
+end
+
+actualizar_lvl_counter = function(self, igual_a_que)
+	self.lvl_counter = igual_a_que;
+	print("actualizando lvl counter");
+	--
+	datos_nivel.puntos_obtenidos = 0;
+	datos_nivel.jugando_nivel_numero = self.lvl_counter - 1;
 end
 
 music_on_off = function(self)
