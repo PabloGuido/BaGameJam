@@ -1,3 +1,5 @@
+local datos_nivel = require("NIVELES.datos_nivel");
+--
 local tile_size = 32;
 
 local check_tiles
@@ -6,9 +8,12 @@ local tiles_table = {};
 local mis_tiles = "/MAPAS#mapa_test1"
 
 -- funcs
-local player_set_pos
+local player_set_pos;
+local sumar_puntos_necesarios;
+
 --
 function init(self)
+	datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios = 0;
 	self.player1_pos = vmath.vector3();
 	self.player2_pos = vmath.vector3();
 	--
@@ -16,6 +21,8 @@ function init(self)
 	tiles_table["w"] = w
 	tiles_table["h"] = h
 	check_tiles(self);
+	--
+	
 
 end
 function on_message(self, message_id, message, sender)
@@ -39,14 +46,21 @@ check_tiles = function(self)
 				--print("player 2")
 				player_set_pos(self, W, H, "/player2");
 			elseif un_tile == 8 then
+				-- Crea pc.
 				msg.post("/inter_factory#inter_factory", "create_inter", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 1)})
+				sumar_puntos_necesarios();
 			elseif un_tile == 16 then
 				msg.post("/inter_factory#inter_factory", "create_goal", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 0.25)})
-					
 			end	
 		end
 		this_h = this_h + 1
 	end
+end
+sumar_puntos_necesarios = function()
+	datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios = datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios + 1;
+	print(datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios)
+	--que_nivel.datos_nivel.puntos_necesarios = que_nivel.datos_nivel.puntos_necesarios + 1
+	--datos_nivel[jugando_nivel_numero].datos_nivel.puntos_necesarios = datos_nivel[jugando_nivel_numero].datos_nivel.puntos_necesarios + 1
 end
 
 player_set_pos = function(self, x, y, player)
