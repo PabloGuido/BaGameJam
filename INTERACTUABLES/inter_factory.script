@@ -37,7 +37,8 @@ function on_message(self, message_id, message, sender)
 end
 nivel_ganado = function()
 	msg.post("controlador#control_player", "nivel_ganado");
-
+	msg.post("GP_GUI#GAMEPLAY", "nivel_ganado");
+	
 end
 local function cambiar_color_goal(x,y,z,w)
 	for i = 1, #table_goal do
