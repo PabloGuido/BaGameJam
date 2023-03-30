@@ -1,35 +1,19 @@
+local anim = require("INTERACTUABLES.inter_anim");
 function init(self)
-	--go.set("#sprite", "tint", vmath.vector4(0,0,1,1))
-	
-end
-
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function fixed_update(self, dt)
-	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
-	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
-	-- Physics section of game.project
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	self.animar = true;
 end
 
 function on_message(self, message_id, message, sender)
 
 	if message_id == hash("cambiar_color_goal") then
 		if message.color == "on" then
+			if self.animar == true then
+				self.animar = false;
+				anim.anim_on("#sprite", 1.25, 0.2);
+			end
 			sprite.play_flipbook("#sprite", "exit_on")
 		else
+			self.animar = true;
 			sprite.play_flipbook("#sprite", "exit_off")
 		end
 		--print(sender)
@@ -41,22 +25,4 @@ function on_message(self, message_id, message, sender)
 			msg.post("inter_factory#inter_factory", "goal+-1", {cantidad = -1})
 		end
 	end
-end
-
-function on_input(self, action_id, action)
-	-- Add input-handling code here. The game object this script is attached to
-	-- must have acquired input focus:
-	--
-	--    msg.post(".", "acquire_input_focus")
-	--
-	-- All mapped input bindings will be received. Mouse and touch input will
-	-- be received regardless of where on the screen it happened.
-	-- Learn more: https://defold.com/manuals/input/
-	-- Remove this function if not needed
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
 end
