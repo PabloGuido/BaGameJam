@@ -1,10 +1,11 @@
 local datos_nivel = require("NIVELES.datos_nivel");
+local anim = require("INTERACTUABLES.inter_anim");
 -- funcs
 local prender_cafe;
 local apagar_cafe;
 
 function init(self)
-	go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
+	--go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
 	self.cafe_prendido = false;
 end
 
@@ -46,12 +47,15 @@ function on_message(self, message_id, message, sender)
 end
 prender_cafe = function(self)
 	self.cafe_prendido = true;
-	go.set("#sprite", "tint", vmath.vector4(0,0,0,1))
+	sprite.play_flipbook("#sprite", "cafe_on")
+	anim.anim_on("#sprite", 1.27, 0.25);
+	--go.set("#sprite", "tint", vmath.vector4(0,0,0,1))
 	datos_nivel.suma_resta_puntos(1);
 end
 
 apagar_cafe = function(self)
 	self.cafe_prendido = false;
-	go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
+	sprite.play_flipbook("#sprite", "cafe_off")
+	--go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
 	datos_nivel.suma_resta_puntos(-1);
 end
