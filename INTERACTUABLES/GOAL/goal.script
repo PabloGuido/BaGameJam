@@ -24,8 +24,15 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+
 	if message_id == hash("cambiar_color_goal") then
 		go.set("#sprite", "tint", message.color)
+	elseif message_id == hash("trigger_response") then
+		if message.enter then
+			msg.post("inter_factory#inter_factory", "goal+-1", {cantidad = 1})
+		else
+			msg.post("inter_factory#inter_factory", "goal+-1", {cantidad = -1})
+		end
 	end
 end
 

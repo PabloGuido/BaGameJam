@@ -7,6 +7,9 @@ local table_goal;
 local chequear_puntos;
 function init(self)
 	table_goal = {};
+	self.goal_count = 0;
+	--local test = datos_nivel.chequeo_de_puntos
+	--print()
 end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("create_inter") then
@@ -20,6 +23,12 @@ function on_message(self, message_id, message, sender)
 		--print(sender) --[debería ser el player o.o]
 		--print("chequeo para ganar");
 		chequear_puntos()
+	elseif message_id == hash("goal+-1") then
+		self.goal_count = self.goal_count + message.cantidad;
+		--print(datos_nivel.chequeo_de_puntos())
+		if self.goal_count == 2 and datos_nivel.chequeo_de_puntos()then
+			print("ganaste el nivel")
+		end
 	end
 end
 local function cambiar_color_goal(x,y,z,w)

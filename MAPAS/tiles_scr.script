@@ -38,8 +38,6 @@ check_tiles = function(self)
 			local un_tile = tilemap.get_tile(mis_tiles, "layer1", W, H)
 			--pprint(un_tile)
 			if un_tile == 9 then
-				--print(W * tile_size)
-				--print(H * tile_size)
 				--print("player 1")
 				player_set_pos(self, W, H, "/player1");
 			elseif un_tile == 10 then
@@ -58,9 +56,7 @@ check_tiles = function(self)
 end
 sumar_puntos_necesarios = function()
 	datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios = datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios + 1;
-	print(datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios)
-	--que_nivel.datos_nivel.puntos_necesarios = que_nivel.datos_nivel.puntos_necesarios + 1
-	--datos_nivel[jugando_nivel_numero].datos_nivel.puntos_necesarios = datos_nivel[jugando_nivel_numero].datos_nivel.puntos_necesarios + 1
+	--print(datos_nivel[datos_nivel.jugando_nivel_numero].puntos_necesarios)
 end
 
 player_set_pos = function(self, x, y, player)
