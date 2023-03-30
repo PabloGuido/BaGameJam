@@ -1,0 +1,57 @@
+local datos_nivel = require("NIVELES.datos_nivel");
+-- funcs
+local prender_cafe;
+local apagar_cafe;
+
+function init(self)
+	go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
+	self.cafe_prendido = false;
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function fixed_update(self, dt)
+	-- This function is called if 'Fixed Update Frequency' is enabled in the Engine section of game.project
+	-- Can be coupled with fixed updates of the physics simulation if 'Use Fixed Timestep' is enabled in
+	-- Physics section of game.project
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	
+	if message_id == hash("trigger_response") and message.other_group == hash("player") then
+		if message.enter then
+			
+			if not self.cafe_prendido then
+				prender_cafe(self);
+			else
+				apagar_cafe(self);
+			end
+			--print(self.cafe_prendido)
+		end
+	end
+
+end
+prender_cafe = function(self)
+	self.cafe_prendido = true;
+	go.set("#sprite", "tint", vmath.vector4(0,0,0,1))
+	datos_nivel.suma_resta_puntos(1);
+end
+
+apagar_cafe = function(self)
+	self.cafe_prendido = false;
+	go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
+	datos_nivel.suma_resta_puntos(-1);
+end

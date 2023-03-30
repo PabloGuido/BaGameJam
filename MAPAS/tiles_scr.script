@@ -49,6 +49,9 @@ check_tiles = function(self)
 				sumar_puntos_necesarios();
 			elseif un_tile == 16 then
 				msg.post("/inter_factory#inter_factory", "create_goal", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 0.25)})
+			elseif un_tile == 18 then
+				msg.post("/inter_factory#inter_factory", "create_cafe", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 0.25)})
+				sumar_puntos_necesarios();
 			end	
 		end
 		this_h = this_h + 1

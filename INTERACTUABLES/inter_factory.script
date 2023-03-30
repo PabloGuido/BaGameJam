@@ -21,6 +21,9 @@ function on_message(self, message_id, message, sender)
 		local goal = factory.create("#goal", message.pos)
 		table.insert(table_goal, goal)
 		--print("creando goal")
+	elseif	message_id == hash("create_cafe") then
+		factory.create("#cafe", message.pos)
+		--print("creando goal")
 	elseif	message_id == hash("chequeo_win") then
 		--print(sender) --[debería ser el player o.o]
 		--print("chequeo para ganar");
@@ -29,7 +32,7 @@ function on_message(self, message_id, message, sender)
 		self.goal_count = self.goal_count + message.cantidad;
 		--print(datos_nivel.chequeo_de_puntos())
 		if self.goal_count == 2 and datos_nivel.chequeo_de_puntos()then
-			print("ganaste el nivel")
+			print("inter_factory.script: GANASTE EL NIVEL")
 			nivel_ganado();
 			
 		end

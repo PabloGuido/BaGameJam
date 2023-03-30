@@ -28,6 +28,7 @@ embedded_components {
   "restitution: 0.5\n"
   "group: \"player\"\n"
   "mask: \"goal\"\n"
+  "mask: \"cafe\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

@@ -23,17 +23,21 @@ move_players = function(self)
 			if result.group == hash("inter") then
 				message_to_inter(result.id)
 				movement_check_table[i] = 1;
+				msg.post("inter_factory#inter_factory", "chequeo_win");
 			end
 		else
-			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_LINEAR, 0.15)
-			movement_check_table[i] = 1;
+			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_LINEAR, 0.15, 0,
+			function()
+				movement_check_table[i] = 1;
+				msg.post("inter_factory#inter_factory", "chequeo_win");
+			end)
 			--print("B")
 			draw_line(from, to) -- <6>
 		end
 	end
 	self.to = vmath.vector3()
 	movement_check(self);
-	msg.post("inter_factory#inter_factory", "chequeo_win");
+	--msg.post("inter_factory#inter_factory", "chequeo_win");
 end
 
 movement_check = function(self)

@@ -1,0 +1,3 @@
+prototype: "/INTERACTUABLES/CAFE u otro/cafe.go"
+load_dynamically: false
+dynamic_prototype: false
