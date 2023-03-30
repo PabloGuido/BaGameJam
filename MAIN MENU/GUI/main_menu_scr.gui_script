@@ -14,6 +14,16 @@ function init(self)
 	self.lvl2 = gui.get_node("2");
 	self.lvl3 = gui.get_node("3");
 	self.lvl4 = gui.get_node("4");
+	--
+	self.lvl5 = gui.get_node("5");
+	self.lvl6 = gui.get_node("6");
+	self.lvl7 = gui.get_node("7");
+	self.lvl8 = gui.get_node("8");
+	--
+	self.lvl9 = gui.get_node("9");
+	self.lvl10 = gui.get_node("10");
+	self.lvl11 = gui.get_node("11");
+	self.lvl12 = gui.get_node("12");
 end
 
 function final(self)
@@ -47,6 +57,22 @@ function on_input(self, action_id, action)
 			msg.post("loader:/go#loader", "load_lvl", {lvl = 3})
 		elseif gui.pick_node(self.lvl4, action.x, action.y) then
 			msg.post("loader:/go#loader", "load_lvl", {lvl = 4})
+		elseif gui.pick_node(self.lvl5, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 5})
+		elseif gui.pick_node(self.lvl6, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 6})
+		elseif gui.pick_node(self.lvl7, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 7})
+		elseif gui.pick_node(self.lvl8, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 8})
+		elseif gui.pick_node(self.lvl9, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 9})
+		elseif gui.pick_node(self.lvl10, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 10})
+		elseif gui.pick_node(self.lvl11, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 11})
+		elseif gui.pick_node(self.lvl12, action.x, action.y) then
+			msg.post("loader:/go#loader", "load_lvl", {lvl = 12})
 		elseif gui.pick_node(self.musica, action.x, action.y) then
 			msg.post("loader:/go#loader", "musica")
 		end

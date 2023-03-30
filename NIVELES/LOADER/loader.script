@@ -14,7 +14,9 @@ function init(self)
 	--
 	self.next_lvl = ""
 	self.lvl_counter = 1;
-	self.lvl_table = {"#main_menu", "#LVL1", "#LVL2", "#LVL3", "#LVL4", "#main_menu"}
+	self.lvl_table = {"#main_menu", "#LVL1", "#LVL2", "#LVL3", "#LVL4", 
+	"#LVL5", "#LVL6", "#LVL7", "#LVL8", 
+	"#LVL9", "#LVL10", "#LVL11", "#LVL12", "#main_menu"};
 	--
 	self.musica = false;
 	sound.play("musica#sound");
@@ -43,7 +45,7 @@ function on_message(self, message_id, message, sender)
 			actualizar_lvl_counter(self, self.lvl_counter + 1);
 			chat_lvl(self);
 			msg.post(self.lvl_table[self.lvl_counter], "load")
-			if self.lvl_counter >= 6 then
+			if self.lvl_counter >= #self.lvl_table then
 				self.lvl_counter = 1;
 				chat_lvl(self);
 			end
