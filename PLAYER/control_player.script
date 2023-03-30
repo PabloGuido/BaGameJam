@@ -65,14 +65,14 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("tomar_input") then
 		--print(sender)
 		msg.post("", "acquire_input_focus");
-		print("player tomando input");
+		--print("player tomando input");
 	elseif message_id == hash("quitar_input") then
 		msg.post("", "release_input_focus");
-		print("player quitando input");
+		--print("player quitando input");
 	elseif message_id == hash("posiciones_iniciales") then
 		go.set_position(message.pos[1], player_table[1])
 		go.set_position(message.pos[2], player_table[2])
-		print(message.pos[1])
+		--print(message.pos[1])
 	end
 end
 

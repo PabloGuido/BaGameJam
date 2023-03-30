@@ -40,11 +40,11 @@ function on_input(self, action_id, action)
 		if  gui.is_enabled(self.box) then
 			if gui.pick_node(self.next_lvl, action.x, action.y) then
 				msg.post("", "release_input_focus")
-				print("pasar nivel")
+				print("gameplay_scr: pasar de nivel")
 				msg.post("loader:/go#loader", "next_lvl")
 			elseif gui.pick_node(self.menu, action.x, action.y) then
 				msg.post("", "release_input_focus")
-				print("main menu")
+				print("gameplay_scr: main menu")
 				msg.post("loader:/go#loader", "main_menu")
 			elseif gui.pick_node(self.close_menu, action.x, action.y) then
 				cerrar_menu(self);
@@ -60,12 +60,12 @@ end
 abrir_menu = function(self)
 	gui.set_enabled(self.open_menu, false);
 	gui.set_enabled(self.box, true);
-	print("abrir menu")
+	--print("abrir menu")
 end
 cerrar_menu = function(self)
 	gui.set_enabled(self.open_menu, true);
 	gui.set_enabled(self.box, false);
-	print("cerrar menu")
+	--print("cerrar menu")
 end
 function on_reload(self)
 	-- Add reload-handling code here

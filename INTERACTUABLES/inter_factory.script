@@ -14,12 +14,11 @@ function on_message(self, message_id, message, sender)
 		--print("creando intreactuable")
 	elseif	message_id == hash("create_goal") then
 		local goal = factory.create("#goal", message.pos)
-		print(goal)
 		table.insert(table_goal, goal)
-		--pprint(table_goal)
-		print("creando goal")
+		--print("creando goal")
 	elseif	message_id == hash("chequeo_win") then
-		print("chequeo para ganar");
+		--print(sender) --[debería ser el player o.o]
+		--print("chequeo para ganar");
 		chequear_puntos()
 	end
 end
@@ -32,7 +31,7 @@ local function cambiar_color_goal(x,y,z,w)
 end
 chequear_puntos = function()
 	if datos_nivel.chequeo_de_puntos() then
-		print("puntos necesarios conseguidos")
+		--print("PUNTOS NECESARIOS CONSEGUIDOS")
 		cambiar_color_goal(0,1,1,1)
 	else
 		cambiar_color_goal(0,0,1,1)

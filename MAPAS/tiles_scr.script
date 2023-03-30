@@ -33,7 +33,7 @@ check_tiles = function(self)
 			if un_tile == 9 then
 				--print(W * tile_size)
 				--print(H * tile_size)
-				print("player 1")
+				--print("player 1")
 				player_set_pos(self, W, H, "/player1");
 			elseif un_tile == 10 then
 				--print("player 2")

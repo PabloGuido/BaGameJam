@@ -9,7 +9,7 @@ local chat_lvl = function(self)
 end
 function init(self)
 	msg.post("", "acquire_input_focus")
-	print("loader ok")
+	--print("loader ok")
 	msg.post("#main_menu", "load")
 	--
 	self.next_lvl = ""
@@ -50,7 +50,7 @@ function on_message(self, message_id, message, sender)
 		end
 		timer.delay(0.65, false, pasar_lvl)
 	elseif	message_id == hash("proxy_unloaded") then
-		print("unloaded")
+		--print("unloaded collection")
 	elseif message_id == hash("load_lvl") then
 		msg.post(self.lvl_table[self.lvl_counter], "unload")
 		--self.lvl_counter = self.lvl_counter + message.lvl;
@@ -74,9 +74,11 @@ function on_message(self, message_id, message, sender)
 end
 
 actualizar_lvl_counter = function(self, igual_a_que)
+	-- Actualiza el contador de la tabla 'self.lvl_table'
 	self.lvl_counter = igual_a_que;
-	print("actualizando lvl counter");
+	--print("actualizando lvl counter");
 	--
+	-- Actualiza los puntos que haya conseguido el player a 0 y actualiza que nivel estamos jugando.
 	datos_nivel.puntos_obtenidos = 0;
 	datos_nivel.jugando_nivel_numero = self.lvl_counter - 1;
 end

@@ -23,7 +23,7 @@ end
 
 M.suma_resta_puntos = function(cuanto)
 	M.puntos_obtenidos = M.puntos_obtenidos + cuanto;
-	print("puntos obtenidos: " .. M.puntos_obtenidos)
+	print("PUNTOS OBTENIDOS: " .. M.puntos_obtenidos)
 	M.chequeo_de_puntos();
 end
 
