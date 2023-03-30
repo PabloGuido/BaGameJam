@@ -1,9 +1,5 @@
 local datos_nivel = require("NIVELES.datos_nivel");
 
-local camera = require "orthographic.camera"
-
-local CAMERA_ID = hash("/camera")
-
 --
 local tile_size = 32;
 
@@ -28,11 +24,13 @@ function init(self)
 	tiles_table["h"] = h
 	check_tiles(self);
 	--
+	-- Camara
 	self.centro_w = (w*32)/2
 	self.centro_h =(h*32)/2
 	go.set_position(vmath.vector3((w*32)/2, (h*32)/2, 1),"/CONVERSACIONES/camera#script")
 	msg.post("/CONVERSACIONES/camera#script", "use_projection", {projection = hash("FIXED_ZOOM")})
-	msg.post("/CONVERSACIONES/camera#script", "zoom_to", {zoom = 1.5})
+	msg.post("/CONVERSACIONES/camera#script", "zoom_to", {zoom = 2})
+	
 
 
 end

@@ -13,11 +13,14 @@ title = BAgame01
 dependencies#0 = https://github.com/britzl/defold-orthographic/archive/refs/tags/3.2.1.zip
 
 [display]
-high_dpi = 1
+high_dpi = 0
 
 [graphics]
 default_texture_min_filter = nearest
 default_texture_mag_filter = nearest
+
+[label]
+subpixels = 0
 
 [sprite]
 subpixels = 0
