@@ -1,5 +1,6 @@
 function init(self)
-	go.set("#sprite", "tint", vmath.vector4(0,0,1,1))
+	--go.set("#sprite", "tint", vmath.vector4(0,0,1,1))
+	
 end
 
 function final(self)
@@ -26,7 +27,13 @@ end
 function on_message(self, message_id, message, sender)
 
 	if message_id == hash("cambiar_color_goal") then
-		go.set("#sprite", "tint", message.color)
+		if message.color == "on" then
+			sprite.play_flipbook("#sprite", "exit_on")
+		else
+			sprite.play_flipbook("#sprite", "exit_off")
+		end
+		--print(sender)
+		--go.set("#sprite", "tint", message.color)
 	elseif message_id == hash("trigger_response") then
 		if message.enter then
 			msg.post("inter_factory#inter_factory", "goal+-1", {cantidad = 1})

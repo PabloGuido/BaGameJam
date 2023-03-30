@@ -273,22 +273,22 @@ convex_hulls {
 convex_hulls {
   index: 220
   count: 4
-  collision_group: ""
+  collision_group: "pared"
 }
 convex_hulls {
   index: 224
   count: 4
-  collision_group: ""
+  collision_group: "pared"
 }
 convex_hulls {
   index: 228
   count: 4
-  collision_group: ""
+  collision_group: "pared"
 }
 convex_hulls {
   index: 232
   count: 4
-  collision_group: ""
+  collision_group: "pared"
 }
 convex_hulls {
   index: 236
