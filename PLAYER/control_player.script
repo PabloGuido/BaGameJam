@@ -73,6 +73,8 @@ function on_message(self, message_id, message, sender)
 		go.set_position(message.pos[1], player_table[1])
 		go.set_position(message.pos[2], player_table[2])
 		--print(message.pos[1])
+	elseif message_id == hash("nivel_ganado") then
+		msg.post("", "release_input_focus");
 	end
 end
 

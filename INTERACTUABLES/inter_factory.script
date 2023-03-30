@@ -5,6 +5,8 @@ local table_goal;
 
 -- funcs
 local chequear_puntos;
+local nivel_ganado;
+--
 function init(self)
 	table_goal = {};
 	self.goal_count = 0;
@@ -28,8 +30,14 @@ function on_message(self, message_id, message, sender)
 		--print(datos_nivel.chequeo_de_puntos())
 		if self.goal_count == 2 and datos_nivel.chequeo_de_puntos()then
 			print("ganaste el nivel")
+			nivel_ganado();
+			
 		end
 	end
+end
+nivel_ganado = function()
+	msg.post("controlador#control_player", "nivel_ganado");
+
 end
 local function cambiar_color_goal(x,y,z,w)
 	for i = 1, #table_goal do
