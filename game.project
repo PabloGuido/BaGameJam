@@ -1,5 +1,6 @@
 [bootstrap]
 main_collection = /NIVELES/LOADER/loader.collectionc
+render = /orthographic/render/orthographic.renderc
 
 [script]
 shared_state = 1
@@ -9,6 +10,7 @@ input_method = HiddenInputField
 
 [project]
 title = BAgame01
+dependencies#0 = https://github.com/britzl/defold-orthographic/archive/refs/tags/3.2.1.zip
 
 [display]
 high_dpi = 1
