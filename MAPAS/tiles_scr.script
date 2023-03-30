@@ -40,7 +40,9 @@ check_tiles = function(self)
 				player_set_pos(self, W, H, "/player2");
 			elseif un_tile == 8 then
 				msg.post("/inter_factory#inter_factory", "create_inter", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 1)})
-				
+			elseif un_tile == 16 then
+				msg.post("/inter_factory#inter_factory", "create_goal", {pos = vmath.vector3(W*tile_size-tile_size/2, H*tile_size-tile_size/2, 0.25)})
+					
 			end	
 		end
 		this_h = this_h + 1

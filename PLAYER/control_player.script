@@ -33,6 +33,7 @@ move_players = function(self)
 	end
 	self.to = vmath.vector3()
 	movement_check(self);
+	msg.post("inter_factory#inter_factory", "chequeo_win");
 end
 
 movement_check = function(self)

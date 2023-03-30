@@ -1,6 +1,42 @@
+local datos_nivel = require("NIVELES.datos_nivel");
+
+--
+local table_goal;
+
+-- funcs
+local chequear_puntos;
+function init(self)
+	table_goal = {};
+end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("create_inter") then
 		factory.create("#inter", message.pos)
 		--print("creando intreactuable")
+	elseif	message_id == hash("create_goal") then
+		local goal = factory.create("#goal", message.pos)
+		print(goal)
+		table.insert(table_goal, goal)
+		--pprint(table_goal)
+		print("creando goal")
+	elseif	message_id == hash("chequeo_win") then
+		print("chequeo para ganar");
+		chequear_puntos()
 	end
 end
+local function cambiar_color_goal(x,y,z,w)
+	for i = 1, #table_goal do
+		msg.post(table_goal[i], "cambiar_color_goal", {color = vmath.vector4(x,y,z,w)});
+		--local sprite = msg.url(nil, table_goal[i], "sprite")
+		--go.set(sprite, "tint", vmath.vector4(x,y,z,w));
+	end
+end
+chequear_puntos = function()
+	if datos_nivel.chequeo_de_puntos() then
+		print("puntos necesarios conseguidos")
+		cambiar_color_goal(0,1,1,1)
+	else
+		cambiar_color_goal(0,0,1,1)
+	end
+end
+
+

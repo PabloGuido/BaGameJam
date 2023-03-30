@@ -16,7 +16,8 @@ M[4].puntos_necesarios = 3;
 --
 M.chequeo_de_puntos = function()
 	if M.puntos_obtenidos == M[M.jugando_nivel_numero].puntos_necesarios then
-		print("puntos necesarios conseguidos")
+		--print("chequeo_de_puntos necesarios conseguidos")
+		return true
 	end
 end
 
