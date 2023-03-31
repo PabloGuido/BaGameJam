@@ -2891,14 +2891,6 @@ layers {
   z: 1.0
   is_visible: 1
   cell {
-    x: 4
-    y: 1
-    tile: 7
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
     x: 6
     y: 1
     tile: 7
@@ -2939,14 +2931,6 @@ layers {
     rotate90: 0
   }
   cell {
-    x: 13
-    y: 1
-    tile: 16
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
     x: 2
     y: 2
     tile: 8
@@ -2979,14 +2963,6 @@ layers {
     rotate90: 0
   }
   cell {
-    x: 13
-    y: 2
-    tile: 16
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
     x: 4
     y: 3
     tile: 16
@@ -2996,14 +2972,6 @@ layers {
   }
   cell {
     x: 5
-    y: 3
-    tile: 16
-    h_flip: 0
-    v_flip: 0
-    rotate90: 0
-  }
-  cell {
-    x: 6
     y: 3
     tile: 16
     h_flip: 0
