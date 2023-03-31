@@ -22,7 +22,7 @@ end
 prender_pc = function(self)
 	sprite.play_flipbook("#sprite", "pc_on")
 	anim.anim_on("#sprite", 1.27, 0.25);
-	sound.play("#pcon", {gain = datos_nivel.gain - 0.35})
+	sound.play("#pcon", {gain = datos_nivel.gain - 0.375})
 	--go.set("#sprite", "tint", vmath.vector4(0,0.8,0,1))
 	self.label_value = 1;
 
@@ -31,7 +31,7 @@ end
 
 apagar_pc = function(self)
 	sprite.play_flipbook("#sprite", "pc_off")
-	sound.play("#pcoff", {gain = datos_nivel.gain - 0.35})
+	sound.play("#pcoff", {gain = datos_nivel.gain - 0.375})
 	--go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
 	self.label_value = 0;
 	
