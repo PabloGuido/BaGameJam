@@ -83,6 +83,19 @@ function on_message(self, message_id, message, sender)
 		--print(message.pos[1])
 	elseif message_id == hash("nivel_ganado") then
 		msg.post("", "release_input_focus");
+		--
+		local animar_players = function(player)
+			go.animate(player_table[player], "scale", go.PLAYBACK_ONCE_FORWARD, 1, go.EASING_INCUBIC, 0.1,0,
+			function()
+				go.set_scale(1, player_table[1])
+				go.set_scale(1, player_table[2])
+				local pos1 = go.get_position(player_table[player]);
+				go.animate(player_table[player], "position.y", go.PLAYBACK_LOOP_FORWARD, pos1.y+4, go.EASING_INEXPO, 0.5)
+			end);
+		end
+		animar_players(1);
+		animar_players(2);
+
 	end
 end
 
