@@ -1,3 +1,5 @@
+local chats = require("SISTEMA CONVERSACIONES.chats")
+local restaurar_chats; -- func
 function init(self)
 	msg.post("@render:", "clear_color", { color = vmath.vector4(0.25, 0.25, 0.45, 0) } )
 	
@@ -24,6 +26,14 @@ function init(self)
 	self.lvl10 = gui.get_node("10");
 	self.lvl11 = gui.get_node("11");
 	self.lvl12 = gui.get_node("12");
+	--print(#chats)
+	restaurar_chats()
+end
+restaurar_chats = function()
+	for i = 1, #chats do
+		chats[i].hacer_chat = true;
+		--print(i)
+	end
 end
 
 function final(self)
