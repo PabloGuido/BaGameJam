@@ -16,7 +16,7 @@ move_players = function(self)
 	for i = 1, #player_table do
 		local from = go.get_position(player_table[i])
 		local to = vmath.vector3(from.x, from.y, from.z) + self.to
-		local result = physics.raycast(from, to, { hash("pared"), hash("inter") }) -- <4>
+		local result = physics.raycast(from, to, { hash("pared"), hash("inter"), hash("player") }) -- <4>
 		
 		if result then
 			draw_line(from, result.position) -- <5>
@@ -24,6 +24,27 @@ move_players = function(self)
 				message_to_inter(result.id)
 				movement_check_table[i] = 1;
 				msg.post("inter_factory#inter_factory", "chequeo_win");
+			elseif result.group == hash("player") then
+				self.se_puede_mover = false;
+				self.esperando_al_otro_pj = true;
+				draw_line(from, result.position)
+				local test1 = function()
+					local result2 = physics.raycast(from, to, { hash("pared"), hash("inter"), hash("player") }) -- <4>
+					if result2 then
+						print("asdasd")
+						self.se_puede_mover = true;
+						self.esperando_al_otro_pj = false;
+					else	
+						go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_INCUBIC, 0.125, 0,
+						function()
+							movement_check_table[i] = 1;
+							msg.post("inter_factory#inter_factory", "chequeo_win");
+							self.se_puede_mover = true;
+							self.esperando_al_otro_pj = false;
+						end)
+						end
+					end
+				timer.delay(0.125, false, test1)
 			end
 		else
 			self.se_puede_mover = false;
@@ -31,7 +52,9 @@ move_players = function(self)
 			function()
 				movement_check_table[i] = 1;
 				msg.post("inter_factory#inter_factory", "chequeo_win");
-				self.se_puede_mover = true;
+				if not self.esperando_al_otro_pj then
+					self.se_puede_mover = true;
+				end
 			end)
 			--print("B")
 			draw_line(from, to) -- <6>
@@ -65,7 +88,8 @@ function init(self)
 	self.se_puede_mover = true;
 	--
 	self.amount_of_movement = 0;
-	
+	--
+	self.esperando_al_otro_pj = false;
 	
 end
 
