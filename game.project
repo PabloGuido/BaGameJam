@@ -28,3 +28,6 @@ subpixels = 0
 [collection_proxy]
 max_count = 16
 
+[sound]
+max_component_count = 256
+
