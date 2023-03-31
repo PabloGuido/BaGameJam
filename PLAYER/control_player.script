@@ -31,7 +31,7 @@ move_players = function(self)
 				local test1 = function()
 					local result2 = physics.raycast(from, to, { hash("pared"), hash("inter"), hash("player") }) -- <4>
 					if result2 then
-						print("asdasd")
+						--print("Players chocando pero no se pueden mover")
 						self.se_puede_mover = true;
 						self.esperando_al_otro_pj = false;
 					else	
