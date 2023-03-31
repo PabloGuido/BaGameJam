@@ -49,6 +49,8 @@ prender_cafe = function(self)
 	self.cafe_prendido = true;
 	sprite.play_flipbook("#sprite", "cafe_on")
 	anim.anim_on("#sprite", 1.27, 0.25);
+	--SONIDO
+	sound.play("#on", {gain = datos_nivel.gain - 0.45})
 	--go.set("#sprite", "tint", vmath.vector4(0,0,0,1))
 	datos_nivel.suma_resta_puntos(1);
 end
@@ -56,6 +58,7 @@ end
 apagar_cafe = function(self)
 	self.cafe_prendido = false;
 	sprite.play_flipbook("#sprite", "cafe_off")
+	sound.play("#off", {gain = datos_nivel.gain - 0.45})
 	--go.set("#sprite", "tint", vmath.vector4(1,1,0,1))
 	datos_nivel.suma_resta_puntos(-1);
 end

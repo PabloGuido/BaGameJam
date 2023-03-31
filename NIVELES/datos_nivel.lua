@@ -1,4 +1,5 @@
 local M = {};
+M.gain = 0.75;
 M.puntos_obtenidos = 0;
 M.jugando_nivel_numero = 1;
 --
