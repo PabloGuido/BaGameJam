@@ -23,6 +23,7 @@ function init(self)
 	sound.pause("musica#sound", true);
 	-- 
 	self.restart = false;
+	self.resume_lvl = 1;
 	
 end
 
@@ -43,7 +44,6 @@ function on_message(self, message_id, message, sender)
 		--
 		local function pasar_lvl()
 			msg.post(self.lvl_table[self.lvl_counter], "unload")
-			--self.lvl_counter = self.lvl_counter + 1;
 			actualizar_lvl_counter(self, self.lvl_counter + 1);
 			chat_lvl(self);
 			msg.post(self.lvl_table[self.lvl_counter], "load")
@@ -71,6 +71,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("visual#transicion", "agrandar_box")
 		--
 		local volver_al_menu = function()
+			self.resume_lvl = self.lvl_counter-1;
 			msg.post(self.lvl_table[self.lvl_counter], "unload")
 			self.lvl_counter = 1;
 			actualizar_lvl_counter(self, 1);
@@ -86,6 +87,17 @@ function on_message(self, message_id, message, sender)
 			self.restart = true;
 		end
 		timer.delay(0.65, false, restart_lvl)
+	elseif message_id == hash("resume_lvl") then
+		msg.post("visual#transicion", "agrandar_box")
+		--
+		local function pasar_lvl()
+			msg.post(self.lvl_table[self.lvl_counter], "unload")
+			actualizar_lvl_counter(self, self.lvl_counter + self.resume_lvl);
+			chat_lvl(self);
+			msg.post(self.lvl_table[self.lvl_counter], "load")
+			
+		end
+		timer.delay(0.65, false, pasar_lvl)
 	elseif message_id == hash("musica") then
 		music_on_off(self);
 	end
