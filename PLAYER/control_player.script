@@ -3,7 +3,7 @@ local message_to_inter;
 local refresh_movement_counter;
 --
 local function draw_line(from, to)
-	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(0,0,0,1) })
+	msg.post("@render:", "draw_line", { start_point = from, end_point = to, color = vmath.vector4(0,0,0,0) })
 end
 local tile_size  = 32;
 local move_players
@@ -26,10 +26,12 @@ move_players = function(self)
 				msg.post("inter_factory#inter_factory", "chequeo_win");
 			end
 		else
-			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_LINEAR, 0.15, 0,
+			self.se_puede_mover = false;
+			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_INCUBIC, 0.125, 0,
 			function()
 				movement_check_table[i] = 1;
 				msg.post("inter_factory#inter_factory", "chequeo_win");
+				self.se_puede_mover = true;
 			end)
 			--print("B")
 			draw_line(from, to) -- <6>
@@ -60,8 +62,10 @@ end
 function init(self)
 	--msg.post("", "acquire_input_focus")
 	self.to = vmath.vector3()
+	self.se_puede_mover = true;
 	--
 	self.amount_of_movement = 0;
+	
 	
 end
 
@@ -83,16 +87,16 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action.pressed and action_id == hash("left") then
+	if action.pressed and action_id == hash("left") and self.se_puede_mover then
 		self.to.x = -tile_size;
 		move_players(self);
-	elseif action.pressed and action_id == hash("right") then
+	elseif action.pressed and action_id == hash("right") and self.se_puede_mover then
 		self.to.x = tile_size;
 		move_players(self);
-	elseif action.pressed and action_id == hash("up") then
+	elseif action.pressed and action_id == hash("up") and self.se_puede_mover then
 		self.to.y = tile_size;
 		move_players(self);
-	elseif action.pressed and action_id == hash("down") then
+	elseif action.pressed and action_id == hash("down") and self.se_puede_mover then
 		self.to.y = -tile_size;
 		move_players(self);
 	elseif action.pressed and action_id == hash("restart") then
