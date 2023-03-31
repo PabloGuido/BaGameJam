@@ -1712,7 +1712,7 @@ layers {
   cell {
     x: 4
     y: 1
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -1728,7 +1728,7 @@ layers {
   cell {
     x: 6
     y: 1
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -1736,7 +1736,7 @@ layers {
   cell {
     x: 7
     y: 1
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -1864,7 +1864,7 @@ layers {
   cell {
     x: 8
     y: 2
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -1888,7 +1888,7 @@ layers {
   cell {
     x: 11
     y: 2
-    tile: 51
+    tile: 57
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -1896,7 +1896,7 @@ layers {
   cell {
     x: 12
     y: 2
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -2136,7 +2136,7 @@ layers {
   cell {
     x: 12
     y: 4
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -2200,7 +2200,7 @@ layers {
   cell {
     x: 5
     y: 5
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -2456,7 +2456,7 @@ layers {
   cell {
     x: 7
     y: 7
-    tile: 51
+    tile: 57
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -2488,7 +2488,7 @@ layers {
   cell {
     x: 11
     y: 7
-    tile: 51
+    tile: 57
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -2736,7 +2736,7 @@ layers {
   cell {
     x: 12
     y: 9
-    tile: 2
+    tile: 50
     h_flip: 0
     v_flip: 0
     rotate90: 0
@@ -2915,6 +2915,38 @@ layers {
     rotate90: 0
   }
   cell {
+    x: 10
+    y: 1
+    tile: 16
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 11
+    y: 1
+    tile: 16
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 12
+    y: 1
+    tile: 16
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 13
+    y: 1
+    tile: 16
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
     x: 2
     y: 2
     tile: 8
@@ -2942,6 +2974,14 @@ layers {
     x: 12
     y: 2
     tile: 7
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
+    x: 13
+    y: 2
+    tile: 16
     h_flip: 0
     v_flip: 0
     rotate90: 0
