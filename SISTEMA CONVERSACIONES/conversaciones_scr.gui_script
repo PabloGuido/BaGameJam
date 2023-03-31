@@ -45,7 +45,7 @@ function on_input(self, action_id, action)
 end
 
 actualizar_texto = function(self)
-	if (chats[chats.lvl][self.text_count]) then
+	if (chats[chats.lvl][self.text_count]) and chats[chats.lvl].hacer_chat then
 		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count]);
 		self.text_count = self.text_count + 1;
 	else
@@ -57,6 +57,8 @@ cerrar_text = function(self)
 	if gui.is_enabled(self.text_box) then
 		gui.set_enabled(self.text_box, false);
 		msg.post("/controlador#control_player", "tomar_input");
+		--Canelar que se repita el chat
+		chats[chats.lvl].hacer_chat = false;
 	end
 end
 
