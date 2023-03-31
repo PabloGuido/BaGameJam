@@ -2,9 +2,9 @@ local M = {}
 M.lvl = 0;
 M[1] = {}
 M[1].hacer_chat = true;
-M[1][1] = "chat 1 LVL 1"
-M[1][2] = "chat 2 LVL 1"
-M[1][3] = "chat 3 LVL 1"
+--M[1][1] = "chat 1 LVL 1"
+--M[1][2] = "chat 2 LVL 1"
+--M[1][3] = "chat 3 LVL 1"
 --M[1][4] = "chat 4 LVL 1"
 ------------------
 M[2] = {}
@@ -16,8 +16,8 @@ M[2].hacer_chat = true;
 ------------------
 M[3] = {}
 M[3].hacer_chat = true;
-M[3][1] = "chat 1 LVL 3"
-M[3][2] = "chat 2 LVL 3"
+--M[3][1] = "chat 1 LVL 3"
+--M[3][2] = "chat 2 LVL 3"
 --M[3][3] = "chat 3 LVL 3"
 --M[3][4] = "chat 4 LVL 3"
 ------------------
