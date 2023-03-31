@@ -331,6 +331,6 @@ convex_hulls {
   collision_group: ""
 }
 collision_groups: "pared"
-extrude_borders: 0
+extrude_borders: 2
 inner_padding: 0
 sprite_trim_mode: SPRITE_TRIM_MODE_OFF
