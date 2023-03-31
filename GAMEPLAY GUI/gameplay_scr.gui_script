@@ -1,3 +1,5 @@
+local datos_nivel = require("NIVELES.datos_nivel");
+pprint(datos_nivel)
 --funcs
 local abrir_menu;
 local cerrar_menu;
@@ -5,7 +7,9 @@ local cerrar_menu;
 function init(self)
 	msg.post("", "acquire_input_focus")
 	self.next_lvl = gui.get_node("next_lvl")
-	gui.set_enabled(self.next_lvl, false);
+	--gui.set_enabled(self.next_lvl, false);
+	self.next_lvl2 = gui.get_node("next_lvl2")
+
 	self.menu = gui.get_node("menu")
 	self.musica = gui.get_node("musica");
 	self.box = gui.get_node("menu_box");
@@ -13,6 +17,9 @@ function init(self)
 	self.open_menu = gui.get_node("open_menu");
 	self.close_menu = gui.get_node("close_menu");
 	self.restart = gui.get_node("restart");
+	self.lvl_txt = gui.get_node("lvl_txt");
+	gui.set_text(self.lvl_txt, "NIVEL: " .. datos_nivel.jugando_nivel_numero)
+	--jugando_nivel_numero
 	--
 	self.zoom_mas = gui.get_node("zoom+");
 	self.zoom_menos = gui.get_node("zoom-");
@@ -40,6 +47,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("nivel_ganado") then
 		gui.set_enabled(self.next_lvl, true);
+		gui.set_position(self.next_lvl, vmath.vector3(480, 320,1))
 	end
 end
 
@@ -58,6 +66,10 @@ function on_input(self, action_id, action)
 				cerrar_menu(self);
 			elseif gui.pick_node(self.musica, action.x, action.y) then
 				msg.post("loader:/go#loader", "musica")
+			elseif gui.pick_node(self.next_lvl2, action.x, action.y) then
+				msg.post("", "release_input_focus")
+				print("gameplay_scr: pasar de nivel")
+				msg.post("loader:/go#loader", "next_lvl")
 			end
 		elseif not gui.is_enabled(self.box) and gui.pick_node(self.open_menu, action.x, action.y) then
 			abrir_menu(self);
@@ -65,6 +77,7 @@ function on_input(self, action_id, action)
 			msg.post("", "release_input_focus")
 			print("gameplay_scr: pasar de nivel")
 			msg.post("loader:/go#loader", "next_lvl")
+			--[[ ZOOM
 		elseif gui.pick_node(self.zoom_mas, action.x, action.y) then
 			self.zoom = self.zoom + 0.25
 			msg.post("/CONVERSACIONES/camera#script", "zoom_to", {zoom = self.zoom})
@@ -73,6 +86,7 @@ function on_input(self, action_id, action)
 			self.zoom = self.zoom - 0.25
 			msg.post("/CONVERSACIONES/camera#script", "zoom_to", {zoom = self.zoom})
 			gui.set_text(self.zoom_txt, self.zoom)
+			]]
 		end
 	end
 end
