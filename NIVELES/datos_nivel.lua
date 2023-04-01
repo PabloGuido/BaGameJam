@@ -56,4 +56,14 @@ M.suma_resta_puntos = function(cuanto)
 	M.chequeo_de_puntos();
 end
 
+M.gain_on_off = function()
+	if M.gain == 0.75 then
+		M.gain = 0;
+		print("gain0" )
+	else
+		M.gain = 0.75
+		print("gain75")
+	end
+end
+
 return M;

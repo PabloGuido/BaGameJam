@@ -1,4 +1,5 @@
 local datos_nivel = require("NIVELES.datos_nivel");
+local anim = require("INTERACTUABLES.inter_anim");
 --pprint(datos_nivel)
 --funcs
 local abrir_menu;

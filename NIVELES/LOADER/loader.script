@@ -62,11 +62,17 @@ function on_message(self, message_id, message, sender)
 		end
 		--print("unloaded collection")
 	elseif message_id == hash("load_lvl") then
-		msg.post(self.lvl_table[self.lvl_counter], "unload")
-		--self.lvl_counter = self.lvl_counter + message.lvl;
-		actualizar_lvl_counter(self, self.lvl_counter + message.lvl);
-		chat_lvl(self);
-		msg.post(self.lvl_table[self.lvl_counter], "load")
+		msg.post("visual#transicion", "agrandar_box")
+		--
+		local function load_lvl()
+			msg.post(self.lvl_table[self.lvl_counter], "unload")
+			actualizar_lvl_counter(self, self.lvl_counter + message.lvl);
+			chat_lvl(self);
+			msg.post(self.lvl_table[self.lvl_counter], "load")
+		end
+		timer.delay(0.65, false, load_lvl)
+		--
+
 	elseif message_id == hash("main_menu") then
 		msg.post("visual#transicion", "agrandar_box")
 		--
