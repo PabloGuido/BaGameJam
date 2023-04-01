@@ -20,7 +20,7 @@ embedded_components {
   "looping: 0\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
-  "pan: 0.0\n"
+  "pan: -0.5\n"
   "speed: 3.0\n"
   "loopcount: 0\n"
   ""
