@@ -97,6 +97,11 @@ function on_input(self, action_id, action)
 			msg.post("loader:/go#loader", "next_lvl")
 			anim.anim_on_gui(self.next_lvl, 1.15, 0.2)
 		end
+	elseif action.pressed and action_id == hash("restart") and gui.is_enabled(self.next_lvl) then
+		msg.post("", "release_input_focus")
+		print("gameplay_scr: pasar de nivel")
+		msg.post("loader:/go#loader", "next_lvl")
+		anim.anim_on_gui(self.next_lvl2, 1.15, 0.2)
 	end
 end
 

@@ -142,9 +142,9 @@ function on_input(self, action_id, action)
 		self.to.y = -tile_size;
 		move_players(self);
 	elseif action.pressed and action_id == hash("restart") then
-		self.amount_of_movement = 0;
-		label.set_text("/contador de movimientos#label", "cantidad de movimientos\nvalidos realizados: " .. self.amount_of_movement);
+		--self.amount_of_movement = 0;
+		--label.set_text("/contador de movimientos#label", "cantidad de movimientos\nvalidos realizados: " .. self.amount_of_movement);
 		--
-		msg.post("/MAPAS#tiles_scr", "restart_player");
+		--msg.post("/MAPAS#tiles_scr", "restart_player");
 	end
 end
