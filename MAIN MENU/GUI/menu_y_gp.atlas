@@ -1,0 +1,47 @@
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Ventana-Principal.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Bot\303\263n-Continuar.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Bot\303\263n-Postular.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Panel-Opciones-y-Selector-de-Niveles.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/1.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/2.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/3.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/4.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/5.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/6.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/7.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0
