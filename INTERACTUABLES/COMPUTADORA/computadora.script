@@ -7,6 +7,11 @@ local apagar_pc;
 function init(self)
 	self.label_value = 0;
 	--print("pc creada")
+	--print(datos_nivel.lvl)
+	if datos_nivel.jugando_nivel_numero == 8 then
+		-- prende los sprites de la computadora en la escena final
+		sprite.play_flipbook("#sprite", "pc_on");
+	end
 end
 
 function on_message(self, message_id, message, sender)

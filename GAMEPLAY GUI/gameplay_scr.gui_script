@@ -50,6 +50,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("nivel_ganado") then
+		msg.post("", "release_input_focus")
 		--
 		gui.set_enabled(self.next_lvl2, false);
 		local function next_lvl()
