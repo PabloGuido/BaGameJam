@@ -71,6 +71,7 @@ cerrar_text = function(self)
 		msg.post("/controlador#control_player", "tomar_input");
 		--Canelar que se repita el chat
 		chats[chats.lvl].hacer_chat = false;
+		msg.post("/inter_factory#inter_factory", "p3_off")
 	end
 end
 

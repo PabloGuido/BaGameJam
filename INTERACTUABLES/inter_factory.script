@@ -24,6 +24,10 @@ function on_message(self, message_id, message, sender)
 	elseif	message_id == hash("create_cafe") then
 		factory.create("#cafe", message.pos)
 		--print("creando goal")
+	elseif	message_id == hash("p3") then
+		go.set_position(message.pos, "#sprite")
+	elseif	message_id == hash("p3_off") then
+		go.set("#sprite", "tint.w", 0)
 	elseif	message_id == hash("chequeo_win") then
 		--print(sender) --[debería ser el player o.o]
 		--print("chequeo para ganar");

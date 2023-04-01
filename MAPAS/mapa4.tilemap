@@ -3163,6 +3163,14 @@ layers {
     rotate90: 0
   }
   cell {
+    x: 8
+    y: 8
+    tile: 19
+    h_flip: 0
+    v_flip: 0
+    rotate90: 0
+  }
+  cell {
     x: 12
     y: 8
     tile: 16
