@@ -14,9 +14,7 @@ function init(self)
 	self.mujer = gui.get_node("M");
 	self.capa = gui.get_node("C");
 	self.scale = gui.get_scale(self.capa)
-	--print(gui.get_id(self.capa))
-	self.tabla_avatares = {hash("H"),hash("M"), hash("C")};
-	print(self.hombre)
+
 	--
 	actualizar_texto(self);
 	local function tomar_input()
@@ -67,11 +65,16 @@ end
 
 cerrar_text = function(self)
 	if gui.is_enabled(self.text_box) then
-		gui.set_enabled(self.text_box, false);
-		msg.post("/controlador#control_player", "tomar_input");
-		--Canelar que se repita el chat
-		chats[chats.lvl].hacer_chat = false;
-		msg.post("/inter_factory#inter_factory", "p3_off")
+		if chats.lvl == 8 then
+			msg.post("loader:/go#loader", "main_menu")
+		else
+			gui.set_enabled(self.text_box, false);
+			msg.post("/controlador#control_player", "tomar_input");
+			--Canelar que se repita el chat
+			chats[chats.lvl].hacer_chat = false;
+			msg.post("/inter_factory#inter_factory", "p3_off")
+		end
+		
 	end
 end
 
@@ -102,8 +105,6 @@ prende_apaga_avatares = function (self)
 		gui.set_scale(self.hombre, self.scale)
 		gui.play_flipbook(self.mujer, chats[chats.lvl][self.text_count][3])
 	end
-
-	--pprint(chats[chats.lvl][self.text_count][self.text_count+1])
 end
 
 
