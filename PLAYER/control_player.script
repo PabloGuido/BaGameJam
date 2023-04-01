@@ -1,3 +1,4 @@
+local datos_nivel = require("NIVELES.datos_nivel");
 -- funcs
 local message_to_inter;
 local refresh_movement_counter;
@@ -35,6 +36,7 @@ move_players = function(self)
 						self.se_puede_mover = true;
 						self.esperando_al_otro_pj = false;
 					else	
+						
 						go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_INCUBIC, 0.125, 0,
 						function()
 							movement_check_table[i] = 1;
@@ -42,12 +44,14 @@ move_players = function(self)
 							self.se_puede_mover = true;
 							self.esperando_al_otro_pj = false;
 						end)
+						sound.play(player_table[i] .. "#sound", {gain = datos_nivel.gain-0.15})
 						end
 					end
 				timer.delay(0.125, false, test1)
 			end
 		else
 			self.se_puede_mover = false;
+			
 			go.animate(player_table[i], "position", go.PLAYBACK_ONCE_FORWARD, to, go.EASING_INCUBIC, 0.125, 0,
 			function()
 				movement_check_table[i] = 1;
@@ -56,6 +60,7 @@ move_players = function(self)
 					self.se_puede_mover = true;
 				end
 			end)
+			sound.play(player_table[i] .. "#sound", {gain = datos_nivel.gain-0.15})
 			--print("B")
 			draw_line(from, to) -- <6>
 		end
