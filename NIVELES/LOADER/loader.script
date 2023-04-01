@@ -18,9 +18,9 @@ function init(self)
 	"#LVL5", "#LVL6", "#LVL7", "#LVL8", 
 	"#LVL9", "#LVL10", "#LVL11", "#LVL12", "#main_menu"};
 	--
-	self.musica = false;
+	self.musica = true;
 	sound.play("musica#sound");
-	sound.pause("musica#sound", true);
+	--sound.pause("musica#sound", true);
 	-- 
 	self.restart = false;
 	self.resume_lvl = 1;

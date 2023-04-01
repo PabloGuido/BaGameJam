@@ -44,7 +44,7 @@ move_players = function(self)
 							self.se_puede_mover = true;
 							self.esperando_al_otro_pj = false;
 						end)
-						sound.play(player_table[i] .. "#sound", {gain = datos_nivel.gain})
+						sound.play(player_table[i] .. "#sound", {gain = datos_nivel.gain - 0.2})
 						end
 					end
 				timer.delay(0.125, false, test1)
@@ -60,7 +60,7 @@ move_players = function(self)
 					self.se_puede_mover = true;
 				end
 			end)
-			sound.play(player_table[i] .. "#sound", {gain = datos_nivel.gain})
+			sound.play(player_table[i] .. "#sound", {gain = datos_nivel.gain - 0.2})
 			--print("B")
 			draw_line(from, to) -- <6>
 		end
