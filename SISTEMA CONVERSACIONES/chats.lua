@@ -6,7 +6,7 @@ M[1][1] = {"¡Bienvenidos a la capacitación! Primero que nada, los felicito por
 
 M[1][2] = {"Una de sus tareas va a ser encender todas las máquinas, voy a mostrarles una para que vean cómo funcionan.", hash("C"),"retrato_capacitador" }
 
-M[1][3] = {"Usen las flechas direccionales para desplazarte", hash("C"),"retrato_capacitador" }
+M[1][3] = {"Usen las flechas direccionales para desplazarse", hash("C"),"retrato_capacitador" }
 
 M[1][4] = {"Diríjanse a la SALIDA una vez resueltas todas las tareas.", hash("C"),"retrato_capacitador" }
 ------------------
@@ -58,7 +58,7 @@ M[8].hacer_chat = true;
 M[8][1] = {"Excelente! Están totalmente calificados. Arrancan mañana mismo.", hash("C"), "retrato_capacitador" }
 M[8][2] = {"Me parece que estamos SOBRE-calificades.", hash("F"), "retrato_femenino_enojo" }
 M[8][3] = {"Y estuvimos hablando, no nos gusta el ambiente de esta compañía.", hash("M"), "retrato_masculino_enojo" }
-M[8][4] = {"Decidimos rechazar la propuesta laboral. Nos estuvieron llegando otras oportunidades y las vamos a toamar.", hash("F"), "retrato_femenino_enojo" }
+M[8][4] = {"Decidimos rechazar la propuesta laboral. Nos estuvieron llegando otras oportunidades y las vamos a tomar.", hash("F"), "retrato_femenino_enojo" }
 M[8][5] = {"No, por favor, no me hagan esto. No saben lo difícil que es encontrar y capacitar gente nueva.", hash("C"), "retrato_capacitador_preocupado" }
 M[8][6] = {"Quizás quien necesite capacitarse más seas vos.", hash("M"), "retrato_masculino_enojo" }
 M[8][7] = {"...", hash("C"), "retrato_capacitador_preocupado" }
