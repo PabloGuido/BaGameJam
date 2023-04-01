@@ -1,13 +1,22 @@
 local chats = require("SISTEMA CONVERSACIONES.chats")
 local actualizar_texto
 local cerrar_text
+local prende_apaga_avatares;
+
 
 function init(self)
 	--pprint(chats)
 	self.text_count = 1;
 	self.text_box = gui.get_node("text_box");
 	self.chat_text = gui.get_node("chat_text");
-	
+
+	self.hombre = gui.get_node("H");
+	self.mujer = gui.get_node("M");
+	self.capa = gui.get_node("C");
+	self.scale = gui.get_scale(self.capa)
+	--print(gui.get_id(self.capa))
+	self.tabla_avatares = {hash("H"),hash("M"), hash("C")};
+	print(self.hombre)
 	--
 	actualizar_texto(self);
 	local function tomar_input()
@@ -45,8 +54,11 @@ function on_input(self, action_id, action)
 end
 
 actualizar_texto = function(self)
+	--print(chats[chats.lvl][self.text_count][self.text_count])
+
 	if (chats[chats.lvl][self.text_count]) and chats[chats.lvl].hacer_chat then
-		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count]);
+		prende_apaga_avatares(self);
+		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count][1]);
 		self.text_count = self.text_count + 1;
 	else
 		cerrar_text(self);
@@ -62,6 +74,36 @@ cerrar_text = function(self)
 	end
 end
 
+prende_apaga_avatares = function (self)
+	local avatar = chats[chats.lvl][self.text_count][2];
+	if avatar == hash("C") then
+		gui.set_color(self.capa, vmath.vector4(1,1,1,1))
+		gui.set_scale(self.capa, self.scale*1.18)
+		gui.set_color(self.hombre, vmath.vector4(0.5,0.5,0.5,1))
+		gui.set_scale(self.hombre, self.scale)
+		gui.set_color(self.mujer, vmath.vector4(0.5,0.5,0.5,1))
+		gui.set_scale(self.mujer, self.scale)
+		gui.play_flipbook(self.capa, chats[chats.lvl][self.text_count][3])
+	elseif avatar == hash("H") then
+		gui.set_color(self.hombre, vmath.vector4(1,1,1,1))
+		gui.set_scale(self.hombre, self.scale*1.18)
+		gui.set_color(self.capa, vmath.vector4(0.5,0.5,0.5,1))
+		gui.set_scale(self.capa, self.scale)
+		gui.set_color(self.mujer, vmath.vector4(0.5,0.5,0.5,1))
+		gui.set_scale(self.mujer, self.scale)
+		gui.play_flipbook(self.hombre, chats[chats.lvl][self.text_count][3])
+	elseif avatar == hash("M") then
+		gui.set_color(self.mujer, vmath.vector4(1,1,1,1))
+		gui.set_scale(self.mujer, self.scale*1.18)
+		gui.set_color(self.capa, vmath.vector4(0.5,0.5,0.5,1))
+		gui.set_scale(self.capa, self.scale)
+		gui.set_color(self.hombre, vmath.vector4(0.5,0.5,0.5,1))
+		gui.set_scale(self.hombre, self.scale)
+		gui.play_flipbook(self.mujer, chats[chats.lvl][self.text_count][3])
+	end
+
+	--pprint(chats[chats.lvl][self.text_count][self.text_count+1])
+end
 
 
 
