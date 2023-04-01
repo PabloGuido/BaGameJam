@@ -58,15 +58,24 @@ actualizar_texto = function(self)
 		prende_apaga_avatares(self);
 		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count][1]);
 		self.text_count = self.text_count + 1;
+		if chats.lvl == 8 then
+			msg.post("/GP_GUI#GAMEPLAY", "disable_next_lvl_2"); -- saca el nxt lvl en la escena final del juego.
+		end
 	else
 		cerrar_text(self);
 	end
 end
 
 cerrar_text = function(self)
+	msg.post("", "release_input_focus")
 	if gui.is_enabled(self.text_box) then
 		if chats.lvl == 8 then
-			msg.post("loader:/go#loader", "main_menu")
+			msg.post("/GP_GUI#GAMEPLAY", "cuadro_fin");
+			--
+			local function fin()
+				msg.post("loader:/go#loader", "main_menu");
+			end
+			timer.delay(5, false, fin)
 		else
 			gui.set_enabled(self.text_box, false);
 			msg.post("/controlador#control_player", "tomar_input");

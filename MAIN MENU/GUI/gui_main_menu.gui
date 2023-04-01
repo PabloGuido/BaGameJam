@@ -1406,7 +1406,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "m\303\272sica"
+  text: "M\303\272sica"
   font: "font_chica"
   id: "text9"
   xanchor: XANCHOR_NONE
@@ -1530,7 +1530,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "sonidos"
+  text: "Sonidos"
   font: "font_chica"
   id: "text"
   xanchor: XANCHOR_NONE

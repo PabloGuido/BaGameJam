@@ -59,10 +59,10 @@ end
 M.gain_on_off = function()
 	if M.gain == 0.75 then
 		M.gain = 0;
-		print("gain0" )
+		--print("gain0" )
 	else
 		M.gain = 0.75
-		print("gain75")
+		--print("gain75")
 	end
 end
 
