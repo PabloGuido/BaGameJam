@@ -84,7 +84,7 @@ prende_apaga_avatares = function (self)
 		gui.set_color(self.mujer, vmath.vector4(0.5,0.5,0.5,1))
 		gui.set_scale(self.mujer, self.scale)
 		gui.play_flipbook(self.capa, chats[chats.lvl][self.text_count][3])
-	elseif avatar == hash("H") then
+	elseif avatar == hash("M") then
 		gui.set_color(self.hombre, vmath.vector4(1,1,1,1))
 		gui.set_scale(self.hombre, self.scale*1.18)
 		gui.set_color(self.capa, vmath.vector4(0.5,0.5,0.5,1))
@@ -92,7 +92,7 @@ prende_apaga_avatares = function (self)
 		gui.set_color(self.mujer, vmath.vector4(0.5,0.5,0.5,1))
 		gui.set_scale(self.mujer, self.scale)
 		gui.play_flipbook(self.hombre, chats[chats.lvl][self.text_count][3])
-	elseif avatar == hash("M") then
+	elseif avatar == hash("F") then
 		gui.set_color(self.mujer, vmath.vector4(1,1,1,1))
 		gui.set_scale(self.mujer, self.scale*1.18)
 		gui.set_color(self.capa, vmath.vector4(0.5,0.5,0.5,1))
