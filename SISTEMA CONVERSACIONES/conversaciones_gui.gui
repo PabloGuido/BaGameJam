@@ -3,6 +3,10 @@ fonts {
   name: "system_font"
   font: "/builtins/fonts/system_font.font"
 }
+fonts {
+  name: "monogram-extended"
+  font: "/SISTEMA CONVERSACIONES/monogram-extended.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -11,7 +15,7 @@ background_color {
 }
 nodes {
   position {
-    x: 640.0
+    x: 480.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -35,9 +39,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.101960786
-    y: 0.3019608
-    z: 0.101960786
+    x: 0.92360926
+    y: 0.9241225
+    z: 0.954918
     w: 1.0
   }
   type: TYPE_BOX
@@ -86,21 +90,21 @@ nodes {
     w: 1.0
   }
   size {
-    x: 200.0
+    x: 560.0
     y: 100.0
     z: 0.0
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: ""
-  font: "system_font"
+  font: "monogram-extended"
   id: "chat_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -118,7 +122,7 @@ nodes {
     w: 1.0
   }
   adjust_mode: ADJUST_MODE_FIT
-  line_break: false
+  line_break: true
   parent: "text_box"
   layer: ""
   inherit_alpha: true
