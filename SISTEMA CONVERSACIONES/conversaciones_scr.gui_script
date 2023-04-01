@@ -1,4 +1,5 @@
 local chats = require("SISTEMA CONVERSACIONES.chats")
+local datos_nivel = require("NIVELES.datos_nivel");
 local actualizar_texto
 local cerrar_text
 local prende_apaga_avatares;
@@ -55,9 +56,12 @@ actualizar_texto = function(self)
 	--print(chats[chats.lvl][self.text_count][self.text_count])
 
 	if (chats[chats.lvl][self.text_count]) and chats[chats.lvl].hacer_chat then
+
 		prende_apaga_avatares(self);
 		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count][1]);
 		self.text_count = self.text_count + 1;
+		sound.play("#sound",{gain = datos_nivel.gain + 0.5})
+
 		if chats.lvl == 8 then
 			msg.post("/GP_GUI#GAMEPLAY", "disable_next_lvl_2"); -- saca el nxt lvl en la escena final del juego.
 		end

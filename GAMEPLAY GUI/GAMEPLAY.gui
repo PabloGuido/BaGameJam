@@ -115,8 +115,8 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Siguiente\n"
-  "nivel"
+  text: "Nivel\n"
+  "superado"
   font: "font_chica"
   id: "text"
   xanchor: XANCHOR_NONE

@@ -36,7 +36,7 @@ function on_message(self, message_id, message, sender)
 		self.goal_count = self.goal_count + message.cantidad;
 		--print(datos_nivel.chequeo_de_puntos())
 		if self.goal_count == 2 and datos_nivel.chequeo_de_puntos()then
-			print("inter_factory.script: GANASTE EL NIVEL")
+			--print("inter_factory.script: GANASTE EL NIVEL")
 			nivel_ganado();
 			
 		end
