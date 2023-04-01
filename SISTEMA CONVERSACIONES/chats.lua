@@ -1,4 +1,3 @@
---test3
 local M = {}
 M.lvl = 0;
 M[1] = {}
@@ -7,9 +6,9 @@ M[1][1] = "¡Bienvenidos a la capacitación! Primero que nada, los felicito por 
 M[1][2] = "Una de sus tareas va a ser encender todas las máquinas, voy a mostrarles una para que vean cómo funcionan."
 --Niveles-balanceados
 M[1][3] = "Usa las flechas direccionales para desplazarte"
-=======
+
 M[1][3] = "Usa las flechas direccionales para desplazarte ←↨→"
--- TEST3
+
 M[1][4] = "Diríguete a la SALIDA una vez resueltas todas las tareas."
 ------------------
 M[2] = {}
