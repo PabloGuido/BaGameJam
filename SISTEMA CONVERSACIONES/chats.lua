@@ -55,7 +55,7 @@ M[7][5] = {"Uh, en realidad no necesitábamos tanta inclusión. Pero tranqui, qu
 ------------------
 M[8] = {}
 M[8].hacer_chat = true;
-M[8][1] = {"Excelente! Están totalmente calificados. Arrancan mañana mismo.", hash("C"), "retrato_capacitador" }
+M[8][1] = {"¡Excelente! Están totalmente calificados. Arrancan mañana mismo.", hash("C"), "retrato_capacitador" }
 M[8][2] = {"Me parece que estamos SOBRE-calificades.", hash("F"), "retrato_femenino_enojo" }
 M[8][3] = {"Y estuvimos hablando, no nos gusta el ambiente de esta compañía.", hash("M"), "retrato_masculino_enojo" }
 M[8][4] = {"Decidimos rechazar la propuesta laboral. Nos estuvieron llegando otras oportunidades y las vamos a tomar.", hash("F"), "retrato_femenino_enojo" }
