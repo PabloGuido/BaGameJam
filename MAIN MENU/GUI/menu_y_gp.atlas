@@ -3,14 +3,6 @@ images {
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/MAIN MENU/GUI/UI IMG/Bot\303\263n-Continuar.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
-  image: "/MAIN MENU/GUI/UI IMG/Bot\303\263n-Postular.png"
-  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
-}
-images {
   image: "/MAIN MENU/GUI/UI IMG/Panel-Opciones-y-Selector-de-Niveles.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
@@ -40,6 +32,30 @@ images {
 }
 images {
   image: "/MAIN MENU/GUI/UI IMG/7.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Panel-Jugador.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Boton-Azul-Negro.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Boton-Postular.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Boton-Naranja-Negro.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/Boton-Continuar.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
+images {
+  image: "/MAIN MENU/GUI/UI IMG/creditos.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0
