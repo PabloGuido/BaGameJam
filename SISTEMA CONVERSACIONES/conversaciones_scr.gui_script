@@ -60,7 +60,7 @@ actualizar_texto = function(self)
 		prende_apaga_avatares(self);
 		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count][1]);
 		self.text_count = self.text_count + 1;
-		sound.play("#sound",{gain = datos_nivel.gain + 0.5})
+		sound.play("#sound",{gain = datos_nivel.gain})
 
 		if chats.lvl == 8 then
 			msg.post("/GP_GUI#GAMEPLAY", "disable_next_lvl_2"); -- saca el nxt lvl en la escena final del juego.

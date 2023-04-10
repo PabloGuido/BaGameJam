@@ -118,7 +118,7 @@ nodes {
   text: "Nivel\n"
   "superado"
   font: "font_chica"
-  id: "text"
+  id: "nivel_superado_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -554,7 +554,7 @@ nodes {
   text: "Reset\n"
   "nivel"
   font: "font_chica"
-  id: "text8"
+  id: "restart_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -801,7 +801,7 @@ nodes {
   text: "Volver\n"
   "al men\303\272"
   font: "font_chica"
-  id: "text1"
+  id: "menu_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -924,7 +924,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "M\303\272sica"
   font: "font_chica"
-  id: "text2"
+  id: "musica_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1047,7 +1047,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Sonidos"
   font: "font_chica"
-  id: "text3"
+  id: "sonidos_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1172,7 +1172,7 @@ nodes {
   "este\n"
   "nivel"
   font: "font_chica"
-  id: "text9"
+  id: "next_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1297,7 +1297,7 @@ nodes {
   "\n"
   "FIN"
   font: "font_grande"
-  id: "text4"
+  id: "texto_final_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

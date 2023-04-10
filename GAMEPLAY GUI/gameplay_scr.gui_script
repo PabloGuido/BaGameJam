@@ -1,9 +1,11 @@
 local datos_nivel = require("NIVELES.datos_nivel");
 local anim = require("INTERACTUABLES.inter_anim");
+local chats = require("SISTEMA CONVERSACIONES.chats")
 --pprint(datos_nivel)
 --funcs
 local abrir_menu;
 local cerrar_menu;
+local cambiar_lenguaje;
 
 function init(self)
 	msg.post("", "acquire_input_focus")
@@ -22,7 +24,10 @@ function init(self)
 	self.restart = gui.get_node("restart");
 	self.lvl = gui.get_node("lvl");
 	self.lvl_txt = gui.get_node("lvl_txt");
-	gui.set_text(self.lvl_txt, "NIVEL: " .. datos_nivel.jugando_nivel_numero)
+	-- func idiomas
+	self.nivel_o_level = "NIVEL: "
+	
+	gui.set_text(self.lvl_txt, self.nivel_o_level .. datos_nivel.jugando_nivel_numero)
 	--jugando_nivel_numero
 	--
 	self.zoom_mas = gui.get_node("zoom+");
@@ -34,18 +39,31 @@ function init(self)
 		msg.post("", "acquire_input_focus")
 	end
 	--Este scr maneja los botones en el gameplay
+	--nivel_superado_txt
+	-- Textos
+	self.menu_txt = gui.get_node("menu_txt");
+	self.restart_txt = gui.get_node("restart_txt");
+	self.next_txt = gui.get_node("next_txt");
+	self.musica_txt = gui.get_node("musica_txt");
+	self.sonidos_txt = gui.get_node("sonidos_txt");
+	self.nivel_superado_txt = gui.get_node("nivel_superado_txt");
+	self.texto_final_txt = gui.get_node("texto_final_txt");
+
+	if chats.idioma == "eng" then
+		cambiar_lenguaje(self);
+	end
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+cambiar_lenguaje = function (self)
+	gui.set_text(self.menu_txt, "Main\nmenu");
+	gui.set_text(self.restart_txt, "Restart\nlevel");
+	gui.set_text(self.next_txt, "Skip\nlevel");
+	gui.set_text(self.musica_txt, "Music");
+	gui.set_text(self.sonidos_txt, "Sounds");
+	gui.set_text(self.nivel_superado_txt, "Level\ncompleted");
+	gui.set_text(self.texto_final_txt, "¡Thank you for\nplaying!\n\nFIN");
+	self.nivel_o_level = "LEVEL: "
+	gui.set_text(self.lvl_txt, self.nivel_o_level .. datos_nivel.jugando_nivel_numero)
 end
 
 function on_message(self, message_id, message, sender)
