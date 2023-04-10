@@ -10,7 +10,7 @@ end
 function init(self)
 	msg.post("", "acquire_input_focus")
 	--print("loader ok")
-	msg.post("#main_menu", "load")
+	msg.post("#idiomas", "load")
 	--
 	self.next_lvl = ""
 	self.lvl_counter = 1;
@@ -106,6 +106,18 @@ function on_message(self, message_id, message, sender)
 		timer.delay(0.65, false, pasar_lvl)
 	elseif message_id == hash("musica") then
 		music_on_off(self);
+	elseif message_id == hash("empezar_el_juego") then
+		msg.post("visual#transicion", "agrandar_box")
+		--
+		local volver_al_menu = function()
+			self.resume_lvl = self.lvl_counter-1;
+			msg.post("#idiomas", "unload")
+			self.lvl_counter = 1;
+			actualizar_lvl_counter(self, 1);
+			chat_lvl(self);
+			msg.post(self.lvl_table[self.lvl_counter], "load")
+		end
+		timer.delay(0.65, false, volver_al_menu)
 	end
 end
 

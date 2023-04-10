@@ -180,7 +180,7 @@ nodes {
   text: "Continuar \n"
   "juego"
   font: "font_chica"
-  id: "text18"
+  id: "cont_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -364,7 +364,7 @@ nodes {
   "\n"
   "Con o sin experiencia - Part Time"
   font: "font_chica_2"
-  id: "text6"
+  id: "desc_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_W
@@ -430,7 +430,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Jugador/a"
   font: "font_grande"
-  id: "text7"
+  id: "jugador_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -786,7 +786,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Niveles"
   font: "font_chica"
-  id: "text8"
+  id: "levels_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1151,7 +1151,7 @@ nodes {
   text: "Game Design - Programaci\303\263n\n"
   "M\303\272sica - Efectos de sonido"
   font: "font_chica_2"
-  id: "text3"
+  id: "desc_pgs"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1284,7 +1284,7 @@ nodes {
   text: "Game Design - Level Design\n"
   "Arte general - Interfaz"
   font: "font_chica_2"
-  id: "text5"
+  id: "desc_ne"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1408,7 +1408,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "M\303\272sica"
   font: "font_chica"
-  id: "text9"
+  id: "musica_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1532,7 +1532,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Sonidos"
   font: "font_chica"
-  id: "text"
+  id: "sonidos_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -1598,7 +1598,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Postularme"
   font: "system_font"
-  id: "text1"
+  id: "postularme_txt"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

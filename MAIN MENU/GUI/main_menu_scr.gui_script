@@ -2,6 +2,7 @@ local chats = require("SISTEMA CONVERSACIONES.chats")
 local datos_nivel = require("NIVELES.datos_nivel");
 local anim = require("INTERACTUABLES.inter_anim");
 local restaurar_chats; -- func
+local cambiar_lenguaje;
 
 function init(self)
 	msg.post("@render:", "clear_color", { color = vmath.vector4(98/255, 97/255, 99/255, 0) } )
@@ -27,7 +28,21 @@ function init(self)
 	self.lvl5 = gui.get_node("5");
 	self.lvl6 = gui.get_node("6");
 	self.lvl7 = gui.get_node("7");
+	-- Textos
+	self.jugador_txt = gui.get_node("jugador_txt");
+	self.postularme_txt = gui.get_node("postularme_txt");
+	self.musica_txt = gui.get_node("musica_txt");
+	self.sonidos_txt = gui.get_node("sonidos_txt");
+	self.cont_txt = gui.get_node("cont_txt");
+	self.levels_txt = gui.get_node("levels_txt");
+	self.desc_txt = gui.get_node("desc_txt");
+	self.desc_pgs = gui.get_node("desc_pgs");
+	self.desc_ne = gui.get_node("desc_ne");
 
+
+	if chats.idioma == "eng" then
+		cambiar_lenguaje(self);
+	end
 
 	--print(#chats)
 	restaurar_chats()
@@ -39,23 +54,18 @@ restaurar_chats = function()
 	end
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+cambiar_lenguaje = function(self)
+	gui.set_text(self.jugador_txt, "Player");
+	gui.set_text(self.postularme_txt, "Apply");
+	gui.set_text(self.musica_txt, "Music");
+	gui.set_text(self.sonidos_txt, "Sounds");
+	gui.set_text(self.cont_txt, "Continue\nGame");
+	gui.set_text(self.levels_txt, "Level select");
+	gui.set_text(self.desc_txt, "Looking for a person willing to try our new game.\n\nNo experience necessary - PART TIME JOB");
+	gui.set_text(self.desc_pgs, "Game Design - Code\nMusic - Sound Effects");
+	gui.set_text(self.desc_ne, "Game Design - Level Design\nArt - User Interface");
 end
 
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
 
 function on_input(self, action_id, action)
 	if action.pressed and action_id == hash("touch") then
@@ -110,8 +120,3 @@ function on_input(self, action_id, action)
 	end
 end
 
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Learn more: https://defold.com/manuals/hot-reload/
-	-- Remove this function if not needed
-end

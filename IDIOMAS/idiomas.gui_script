@@ -1,0 +1,54 @@
+local chats = require("SISTEMA CONVERSACIONES.chats")
+
+--
+
+function init(self)
+	msg.post("@render:", "clear_color", { color = vmath.vector4(98/255, 97/255, 99/255, 0) } )
+	msg.post("", "acquire_input_focus")
+	--
+	self.esp = gui.get_node("esp");
+	self.eng = gui.get_node("eng");
+
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+	
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Learn more: https://defold.com/manuals/script/
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Learn more: https://defold.com/manuals/message-passing/
+	-- Remove this function if not needed
+end
+
+function on_input(self, action_id, action)
+	if action.pressed and action_id == hash("touch") then
+		if gui.pick_node(self.eng, action.x, action.y) then
+			chats.idioma = "eng";
+			msg.post("", "release_input_focus");
+			print("eng");
+			msg.post("loader:/go#loader", "empezar_el_juego")
+		elseif gui.pick_node(self.esp, action.x, action.y) then
+			chats.idioma = "esp";
+			msg.post("", "release_input_focus");
+			print("esp");
+			msg.post("loader:/go#loader", "empezar_el_juego")
+		end
+	end
+	
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Learn more: https://defold.com/manuals/hot-reload/
+	-- Remove this function if not needed
+end

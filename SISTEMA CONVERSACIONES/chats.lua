@@ -1,5 +1,6 @@
 local M = {}
 M.lvl = 0;
+M.idioma = "esp";
 M[1] = {}
 M[1].hacer_chat = true;
 M[1][1] = {"¡Bienvenidos a la capacitación! Primero que nada, los felicito por llegar hasta acá.", hash("C"), "retrato_capacitador" }
