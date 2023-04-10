@@ -32,8 +32,6 @@ function init(self)
 	msg.post("/CONVERSACIONES/camera#script", "use_projection", {projection = hash("FIXED_AUTO")})
 	msg.post("/CONVERSACIONES/camera#script", "zoom_to", {zoom = 2})
 	
-
-
 end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("restart_player") then
