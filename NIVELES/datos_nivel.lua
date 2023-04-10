@@ -2,6 +2,7 @@ local M = {};
 M.gain = 0.75;
 M.puntos_obtenidos = 0;
 M.jugando_nivel_numero = 1;
+M.continue = false;
 --
 M[1] ={};
 M[1].puntos_necesarios = 0;

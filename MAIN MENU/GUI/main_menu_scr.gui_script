@@ -43,6 +43,11 @@ function init(self)
 	if chats.idioma == "eng" then
 		cambiar_lenguaje(self);
 	end
+	if datos_nivel.continue then
+		gui.set_alpha(self.resume, 1);
+	else
+		gui.set_alpha(self.resume, 0.4);
+	end
 
 	--print(#chats)
 	restaurar_chats()
@@ -75,7 +80,7 @@ function on_input(self, action_id, action)
 			msg.post("loader:/go#loader", "next_lvl")
 			msg.post("", "release_input_focus")
 			anim.anim_on_gui(self.play, 1.15, 0.2)
-		elseif gui.pick_node(self.resume, action.x, action.y) then
+		elseif gui.pick_node(self.resume, action.x, action.y) and datos_nivel.continue then
 			sound.play("#sound",{gain = datos_nivel.gain})
 			msg.post("loader:/go#loader", "resume_lvl")
 			msg.post("", "release_input_focus")

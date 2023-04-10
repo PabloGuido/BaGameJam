@@ -52,6 +52,7 @@ function init(self)
 	if chats.idioma == "eng" then
 		cambiar_lenguaje(self);
 	end
+	datos_nivel.continue = true; -- Esto es para hacer andar el bontón de Continue (self.resume);
 end
 
 cambiar_lenguaje = function (self)
