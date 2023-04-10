@@ -24,24 +24,6 @@ function init(self)
 	timer.delay(0.65, false, tomar_input)
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
-end
-
 function on_input(self, action_id, action)
 	if action_id == hash("text") then
 		actualizar_texto(self);
@@ -58,7 +40,12 @@ actualizar_texto = function(self)
 	if (chats[chats.lvl][self.text_count]) and chats[chats.lvl].hacer_chat then
 
 		prende_apaga_avatares(self);
-		gui.set_text(self.chat_text , chats[chats.lvl][self.text_count][1]);
+		if chats.idioma == "eng" then
+			gui.set_text(self.chat_text , chats[chats.lvl][self.text_count].eng);
+		else
+			gui.set_text(self.chat_text , chats[chats.lvl][self.text_count][1]);
+		end
+		
 		self.text_count = self.text_count + 1;
 		sound.play("#sound",{gain = datos_nivel.gain})
 
