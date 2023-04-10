@@ -33,3 +33,6 @@ max_count = 16
 [sound]
 max_component_count = 256
 
+[html5]
+cssfile = /main/light_themeCSScustom.css
+
