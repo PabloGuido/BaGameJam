@@ -19,7 +19,7 @@ function init(self)
 	"#LVL9", "#LVL10", "#LVL11", "#LVL12", "#main_menu"};
 	--
 	self.musica = true;
-	sound.play("musica#sound");
+	
 	--sound.pause("musica#sound", true);
 	-- 
 	self.restart = false;
@@ -116,8 +116,10 @@ function on_message(self, message_id, message, sender)
 			actualizar_lvl_counter(self, 1);
 			chat_lvl(self);
 			msg.post(self.lvl_table[self.lvl_counter], "load")
+			sound.play("musica#sound");
 		end
 		timer.delay(0.65, false, volver_al_menu)
+
 	end
 end
 
